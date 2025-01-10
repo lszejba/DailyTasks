@@ -1,0 +1,17 @@
+E:\Projects\DailyTasks\bin\Debug\net6.0\DailyTasks.exe
+E:\Projects\DailyTasks\bin\Debug\net6.0\DailyTasks.deps.json
+E:\Projects\DailyTasks\bin\Debug\net6.0\DailyTasks.runtimeconfig.json
+E:\Projects\DailyTasks\bin\Debug\net6.0\DailyTasks.dll
+E:\Projects\DailyTasks\bin\Debug\net6.0\DailyTasks.pdb
+E:\Projects\DailyTasks\obj\Debug\net6.0\DailyTasks.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projects\DailyTasks\obj\Debug\net6.0\DailyTasks.AssemblyInfoInputs.cache
+E:\Projects\DailyTasks\obj\Debug\net6.0\DailyTasks.AssemblyInfo.cs
+E:\Projects\DailyTasks\obj\Debug\net6.0\DailyTasks.csproj.CoreCompileInputs.cache
+E:\Projects\DailyTasks\obj\Debug\net6.0\DailyTasks.dll
+E:\Projects\DailyTasks\obj\Debug\net6.0\refint\DailyTasks.dll
+E:\Projects\DailyTasks\obj\Debug\net6.0\DailyTasks.pdb
+E:\Projects\DailyTasks\obj\Debug\net6.0\DailyTasks.genruntimeconfig.cache
+E:\Projects\DailyTasks\obj\Debug\net6.0\ref\DailyTasks.dll
+E:\Projects\DailyTasks\bin\Debug\net6.0\Newtonsoft.Json.dll
+E:\Projects\DailyTasks\obj\Debug\net6.0\DailyTasks.csproj.AssemblyReference.cache
+E:\Projects\DailyTasks\obj\Debug\net6.0\DailyTasks.csproj.CopyComplete
