@@ -1,1 +1,5 @@
-*.bin
+.vs
+DailyTasksConsole\bin
+DailyTasksConsole\obj
+DailyTasksLibrary\bin
+DailyTasksLibrary\obj
