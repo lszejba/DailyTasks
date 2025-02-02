@@ -5,24 +5,33 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace DailyTasksLibrary
+namespace DailyTasksLibrary;
+
+public class ChecklistItem : TaskItem
 {
-    public class ChecklistItem : TaskItem
+    public ChecklistItem(string value, int seq/*, Entry parent*/)
     {
-        public ChecklistItem(string value, int seq/*, Entry parent*/)
-        {
-            Value = value;
-            DateTime now = DateTime.Now;
-            CreationDate = new DateOnly(now.Year, now.Month, now.Day);
-            SequenceNumber = seq;
-            //Parent = parent;
-        }
+        Value = value;
+        DateTime now = DateTime.Now;
+        CreationDate = new DateOnly(now.Year, now.Month, now.Day);
+        SequenceNumber = seq;
+        //Parent = parent;
+    }
 
-        public string Value { get; }
+    public string Value { get; }
 
-        public int SequenceNumber { get; set; }
+    public int SequenceNumber { get; set; }
 
-        //[JsonIgnore]
-        //public Entry Parent { get; }
+    //[JsonIgnore]
+    //public Entry Parent { get; }
+
+    public override void Cancel(DateOnly cancelationDate)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void Complete(DateOnly completionDate)
+    {
+        throw new NotImplementedException();
     }
 }

@@ -16,6 +16,10 @@ while (true)
             Console.WriteLine("- list - list of commands (this)");
             Console.WriteLine("- add  - add new entry");
             Console.WriteLine("- item - add new item to existing entry");
+            Console.WriteLine("- cancel entry - cancel entry and all its items");
+            Console.WriteLine("- cancel item - cancel item");
+            Console.WriteLine("- complete entry - complete entry and all its items");
+            Console.WriteLine("- complete item - complete item");
             Console.WriteLine("- print - print all entries for selected date");
             Console.WriteLine("- save - serialize and save all entries as JSON");
             Console.WriteLine("- note - add note to entry or item");
@@ -61,6 +65,18 @@ while (true)
                 break;
             }
             manager.AddItem(index, itemItems[1]);
+            break;
+        case "cancel entry":
+            throw new NotImplementedException();
+            break;
+        case "cancel item":
+            throw new NotImplementedException();
+            break;
+        case "complete entry":
+            throw new NotImplementedException();
+            break;
+        case "complete item":
+            throw new NotImplementedException();
             break;
         case "save":
             manager.SaveAll();
