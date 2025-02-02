@@ -9,6 +9,7 @@ while (true)
     Console.Write("Enter command ('list' for list of commands): ");
     string cmd = Console.ReadLine();
     DateTime now = DateTime.Now;
+    DateOnly operationDate = new DateOnly(now.Year, now.Month, now.Day);
     switch (cmd.ToLower())
     {
         case "list":
@@ -35,49 +36,128 @@ while (true)
                 break;
             }
             string dateStr = entryItems.Length < 3 ? string.Empty : entryItems[2];
-            DateOnly entryDate = string.IsNullOrEmpty(dateStr) ? new DateOnly(now.Year, now.Month, now.Day) : ParseDate(dateStr);
+            DateOnly entryDate = string.IsNullOrEmpty(dateStr) ? operationDate : ParseDate(dateStr);
             manager.AddEntry(entryDate, entryItems[0], entryItems.Length > 1 ? entryItems[1] : string.Empty);
             break;
         case "print":
             Console.Write("- enter date (empty for today): ");
             string printStr = Console.ReadLine();
-            DateOnly printDate = string.IsNullOrEmpty(printStr) ? new DateOnly(now.Year, now.Month, now.Day) : ParseDate(printStr);
+            DateOnly printDate = string.IsNullOrEmpty(printStr) ? operationDate : ParseDate(printStr);
             manager.PrintEntries(printDate);
             break;
         case "item":
-            if (manager.Count == 0)
             {
-                Console.WriteLine("No entries added yet");
+                if (manager.Count == 0)
+                {
+                    Console.WriteLine("No entries added yet");
+                    break;
+                }
+                Console.Write($"(format [Index](0-{manager.Count - 1})\\t[Item]): ");
+                string itemStr = Console.ReadLine();
+                string[] itemItems = itemStr.Split('\t');
+                if (itemItems.Length < 2)
+                {
+                    Console.WriteLine("ERROR: Invalid format");
+                    break;
+                }
+                int index = int.Parse(itemItems[0]);
+                Entry? entry = manager.GetItem(index);
+                if (entry == null)
+                {
+                    Console.WriteLine("ERROR: Invalid entry index selected");
+                    break;
+                }
+                entry.AddItem(itemItems[1]);
                 break;
             }
-            Console.Write($"(format [Index](0-{manager.Count - 1})\\t[Item]): ");
-            string itemStr = Console.ReadLine();
-            string[] itemItems = itemStr.Split('\t');
-            if (itemItems.Length < 2)
-            {
-                Console.WriteLine("ERROR: Invalid format");
-                break;
-            }
-            int index = int.Parse(itemItems[0]);
-            if (index > manager.Count)
-            {
-                Console.WriteLine("ERROR: Invalid entry index selected");
-                break;
-            }
-            manager.AddItem(index, itemItems[1]);
-            break;
         case "cancel entry":
-            throw new NotImplementedException();
-            break;
+            {
+                if (manager.Count == 0)
+                {
+                    Console.WriteLine("No entries added yet");
+                    break;
+                }
+                Console.Write($"select entry (0-{manager.Count - 1}): ");
+                int entryIdx = int.Parse(Console.ReadLine());
+                Entry? entry = manager.GetItem(entryIdx);
+                if (entry == null)
+                {
+                    Console.WriteLine("ERROR: Invalid entry index selected");
+                    break;
+                }
+                entry.Cancel(operationDate);
+                break;
+            }
         case "cancel item":
-            throw new NotImplementedException();
-            break;
+            {
+                if (manager.Count == 0)
+                {
+                    Console.WriteLine("No entries added yet");
+                    break;
+                }
+                Console.Write($"select entry (0-{manager.Count - 1}): ");
+                int entryIdx = int.Parse(Console.ReadLine());
+                Entry? entry = manager.GetItem(entryIdx);
+                if (entry == null)
+                {
+                    Console.WriteLine("ERROR: Invalid entry index selected");
+                    break;
+                }
+                if (entry.Items.Count == 0)
+                {
+                    Console.WriteLine("No items added yet");
+                    break;
+                }
+                Console.Write($"select item to cancel (0-{manager.Count - 1}): ");
+                int itemIdx = int.Parse(Console.ReadLine());
+                ChecklistItem? checklistItem = entry.GetItem(itemIdx);
+                checklistItem.Cancel(operationDate);
+                break;
+            }
         case "complete entry":
-            throw new NotImplementedException();
-            break;
+            {
+                if (manager.Count == 0)
+                {
+                    Console.WriteLine("No entries added yet");
+                    break;
+                }
+                Console.Write($"select entry (0-{manager.Count - 1}): ");
+                int entryIdx = int.Parse(Console.ReadLine());
+                Entry? entry = manager.GetItem(entryIdx);
+                if (entry == null)
+                {
+                    Console.WriteLine("ERROR: Invalid entry index selected");
+                    break;
+                }
+                entry.Complete(operationDate);
+                break;
+            }
         case "complete item":
-            throw new NotImplementedException();
-            break;
+            {
+                if (manager.Count == 0)
+                {
+                    Console.WriteLine("No entries added yet");
+                    break;
+                }
+                Console.Write($"select entry (0-{manager.Count - 1}): ");
+                int entryIdx = int.Parse(Console.ReadLine());
+                Entry? entry = manager.GetItem(entryIdx);
+                if (entry == null)
+                {
+                    Console.WriteLine("ERROR: Invalid entry index selected");
+                    break;
+                }
+                if (entry.Items.Count == 0)
+                {
+                    Console.WriteLine("No items added yet");
+                    break;
+                }
+                Console.Write($"select item to complete (0-{manager.Count - 1}): ");
+                int itemIdx = int.Parse(Console.ReadLine());
+                ChecklistItem? checklistItem = entry.GetItem(itemIdx);
+                checklistItem.Complete(operationDate);
+                break;
+            }
         case "save":
             manager.SaveAll();
             break;

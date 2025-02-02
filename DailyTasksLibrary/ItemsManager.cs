@@ -24,10 +24,18 @@ public class ItemsManager
         entries.Add(entry);
     }
 
-    public void AddItem(int index, string item)
+    /*public void AddItem(int index, string item)
     {
         Entry parent = entries[index];
         parent.AddItem(item);
+    }*/
+
+    public Entry? GetItem(int index)
+    {
+        if (entries.Count == 0) return null;
+        if (entries.Count <= index) return null;
+        if (index < 0) return null;
+        return entries[index];
     }
 
     public void PrintEntries(DateOnly date = new DateOnly(), bool showCompletedEntries = false)

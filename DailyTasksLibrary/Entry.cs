@@ -45,6 +45,14 @@ public class Entry : TaskItem
 
     //List<ChecklistItem> items;
 
+    public ChecklistItem? GetItem(int index)
+    {
+        if (Items.Count == 0) return null;
+        if (Items.Count <= index) return null;
+        if (index < 0) return null;
+        return Items[index];
+    }
+
     public override void Cancel(DateOnly cancelationDate)
     {
         throw new NotImplementedException();
