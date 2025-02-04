@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,10 +25,10 @@ public class Entry : TaskItem
 
     public override string ToString()
     {
-        string result = Name + (string.IsNullOrEmpty(Description) ? "" : "\n" + Description) + "\n";
+        string result = (IsCompleted ? "[COMPLETE] " : "") + (IsCanceled ? "[CANCELED] " : "") + Name + (string.IsNullOrEmpty(Description) ? "" : "\n" + Description) + "\n";
         foreach (var item in Items)
         {
-            result += "\t" + item.Value + "\n";
+            result += item.ToString();//"\t" + item.Value + "\n";
         }
         return result;
     }
@@ -55,11 +56,15 @@ public class Entry : TaskItem
 
     public override void Cancel(DateOnly cancelationDate)
     {
-        throw new NotImplementedException();
+        if (IsCompleted) return;
+        foreach (var item in Items) { item.Cancel(cancelationDate); }
+        CancelationDate = cancelationDate;
     }
 
     public override void Complete(DateOnly completionDate)
     {
-        throw new NotImplementedException();
+        if (IsCanceled) return;
+        foreach (var item in Items) { item.Complete(completionDate); }
+        CompletionDate = completionDate;
     }
 }

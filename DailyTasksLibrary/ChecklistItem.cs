@@ -27,11 +27,18 @@ public class ChecklistItem : TaskItem
 
     public override void Cancel(DateOnly cancelationDate)
     {
-        throw new NotImplementedException();
+        if (IsCompleted) return; // can't cancel already completed items
+        CancelationDate = cancelationDate;
     }
 
     public override void Complete(DateOnly completionDate)
     {
-        throw new NotImplementedException();
+        if (IsCanceled) return; // can't complete already canceled items
+        CompletionDate = completionDate;
+    }
+
+    public override string ToString()
+    {
+        return "\t" + (IsCompleted ? "[COMPLETE] " : "") + (IsCanceled ? "[CANCELED] " : "") + Value + "\n";
     }
 }

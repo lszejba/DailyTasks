@@ -8,13 +8,13 @@ namespace DailyTasksLibrary;
 
 public abstract class TaskItem
 {
-    public bool IsCompleted { get; set; }
-    public bool IsCanceled { get; set; }
-    public bool IsExpired { get; set; }
+    public bool IsCompleted => (CompletionDate != null && CompletionDate <= ItemsManager.CurrentDate);
+    public bool IsCanceled => (CancelationDate != null && CancelationDate <= ItemsManager.CurrentDate);
+    public bool IsExpired => false;
     public DateOnly CreationDate { get; set; }
-    public DateOnly CompletionDate { get; set; }
-    public DateOnly CancelationDate { get; set; }
-    public DateOnly ExpirationDate { get; set; }
+    public DateOnly? CompletionDate { get; set; }
+    public DateOnly? CancelationDate { get; set; }
+    public DateOnly? ExpirationDate { get; set; }
 
     public List<string>? Notes { get; set; }
 

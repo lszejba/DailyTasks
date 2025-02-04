@@ -10,12 +10,27 @@ public class ItemsManager
 {
     List<Entry> entries;
 
+    static DateOnly? currentDate = null;
+
     public ItemsManager()
     {
         entries = new List<Entry>();
     }
 
     public int Count { get { return entries.Count; } }
+
+    public static DateOnly CurrentDate
+    {
+        get
+        {
+            if (currentDate == null)
+            {
+                DateTime now = DateTime.Now;
+                currentDate = new DateOnly(now.Year, now.Month, now.Day);
+            }
+            return (DateOnly)currentDate;
+        }
+    }
 
     public void AddEntry(DateOnly date, string name, string description)
     {
