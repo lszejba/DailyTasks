@@ -8,8 +8,8 @@ while (true)
 {
     Console.Write("Enter command ('list' for list of commands): ");
     string cmd = Console.ReadLine();
-    DateTime now = DateTime.Now;
-    DateOnly operationDate = new DateOnly(now.Year, now.Month, now.Day);
+    //DateTime now = DateTime.Now;
+    DateOnly operationDate = ItemsManager.CurrentDate;//new DateOnly(now.Year, now.Month, now.Day);
     switch (cmd.ToLower())
     {
         case "list":
@@ -111,7 +111,7 @@ while (true)
                 Console.Write($"select item to cancel (0-{manager.Count - 1}): ");
                 int itemIdx = int.Parse(Console.ReadLine());
                 ChecklistItem? checklistItem = entry.GetItem(itemIdx);
-                checklistItem.Cancel(operationDate);
+                checklistItem?.Cancel(operationDate);
                 break;
             }
         case "complete entry":
@@ -155,29 +155,40 @@ while (true)
                 Console.Write($"select item to complete (0-{manager.Count - 1}): ");
                 int itemIdx = int.Parse(Console.ReadLine());
                 ChecklistItem? checklistItem = entry.GetItem(itemIdx);
-                checklistItem.Complete(operationDate);
+                checklistItem?.Complete(operationDate);
                 break;
             }
         case "save":
             manager.SaveAll();
             break;
         case "note":
-            Console.WriteLine($"(format [Entry Index]\t(Item index)\t[Note]): ");
-            string noteStr = Console.ReadLine();
-            string[] noteItems = noteStr.Split('\t');
-            switch (noteItems.Length)
             {
-                case 2:
-                    throw new NotImplementedException();
+                Console.WriteLine($"(format [Entry Index]\t(Item index)\t[Note]): ");
+                string noteStr = Console.ReadLine();
+                string[] noteItems = noteStr.Split('\t');
+                int entryIndex = int.Parse(noteItems[0]);
+                Entry? entry = manager.GetItem(entryIndex);
+                if (entry == null)
+                {
+                    Console.WriteLine("ERROR: Invalid entry index selected");
                     break;
-                case 3:
-                    throw new NotImplementedException();
-                    break;
-                default:
-                    Console.WriteLine("ERROR: Invalid format");
-                    break;
+                }
+                switch (noteItems.Length)
+                {
+                    case 2:
+                        entry.AddNote(noteItems[1]);
+                        break;
+                    case 3:
+                        int itemIndex = int.Parse(noteItems[1]);
+                        ChecklistItem? checklistItem = entry.GetItem(itemIndex);
+                        checklistItem?.AddNote(noteItems[2]);
+                        break;
+                    default:
+                        Console.WriteLine("ERROR: Invalid format");
+                        break;
+                }
+                break;
             }
-            break;
         case "exit":
             manager.SaveAll();
             Environment.Exit(0);

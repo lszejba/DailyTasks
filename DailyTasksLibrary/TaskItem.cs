@@ -21,4 +21,13 @@ public abstract class TaskItem
     public abstract void Complete(DateOnly completionDate);
 
     public abstract void Cancel(DateOnly cancelationDate);
+
+    public virtual void AddNote(string note)
+    {
+        if (Notes == null)
+        {
+            Notes = new List<string>();
+        }
+        Notes.Add(note);
+    }
 }

@@ -25,10 +25,16 @@ public class Entry : TaskItem
 
     public override string ToString()
     {
-        string result = (IsCompleted ? "[COMPLETE] " : "") + (IsCanceled ? "[CANCELED] " : "") + Name + (string.IsNullOrEmpty(Description) ? "" : "\n" + Description) + "\n";
+        string result = (IsCompleted ? "[COMPLETE] " : "")
+            + (IsCanceled ? "[CANCELED] " : "")
+            + Name + (string.IsNullOrEmpty(Description) ? "" : "\n" + Description) + "\n";
+        for (int i = 0; i < Notes?.Count; i++)
+        {
+            result += "[Note " + i + "]: " + Notes[i] + "\n";
+        }
         foreach (var item in Items)
         {
-            result += item.ToString();//"\t" + item.Value + "\n";
+            result += item.ToString();
         }
         return result;
     }

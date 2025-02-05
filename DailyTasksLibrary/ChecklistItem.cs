@@ -39,6 +39,13 @@ public class ChecklistItem : TaskItem
 
     public override string ToString()
     {
-        return "\t" + (IsCompleted ? "[COMPLETE] " : "") + (IsCanceled ? "[CANCELED] " : "") + Value + "\n";
+        string result = "\t" + (IsCompleted ? "[COMPLETE] " : "") + (IsCanceled ? "[CANCELED] " : "") + Value + "\n";
+
+        for (int i = 0; i < Notes?.Count; i++)
+        {
+            result += "\t[Note " + i + "]: " + Notes[i] + "\n";
+        }
+
+        return result;
     }
 }
