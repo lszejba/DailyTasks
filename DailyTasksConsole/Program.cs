@@ -8,8 +8,7 @@ while (true)
 {
     Console.Write("Enter command ('list' for list of commands): ");
     string cmd = Console.ReadLine();
-    //DateTime now = DateTime.Now;
-    DateOnly operationDate = ItemsManager.CurrentDate;//new DateOnly(now.Year, now.Month, now.Day);
+    DateOnly operationDate = ItemsManager.CurrentDate;
     switch (cmd.ToLower())
     {
         case "list":

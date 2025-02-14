@@ -9,13 +9,12 @@ namespace DailyTasksLibrary;
 
 public class ChecklistItem : TaskItem
 {
-    public ChecklistItem(string value, int seq/*, Entry parent*/)
+    public ChecklistItem(string value, int seq)
     {
         Value = value;
         DateTime now = DateTime.Now;
         CreationDate = new DateOnly(now.Year, now.Month, now.Day);
         SequenceNumber = seq;
-        //Parent = parent;
     }
 
     public string Value { get; }
@@ -38,6 +37,11 @@ public class ChecklistItem : TaskItem
     }
 
     public override string ToString()
+    {
+        return (IsCompleted ? "[COMPLETE] " : "") + (IsCanceled ? "[CANCELED] " : "") + Value;
+    }
+
+    public string FullString()
     {
         string result = "\t" + (IsCompleted ? "[COMPLETE] " : "") + (IsCanceled ? "[CANCELED] " : "") + Value + "\n";
 

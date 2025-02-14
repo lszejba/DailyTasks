@@ -25,6 +25,11 @@ public class Entry : TaskItem
 
     public override string ToString()
     {
+        return (IsCompleted ? "[COMPLETE] " : "") + (IsCanceled ? "[CANCELED] " : "") + Name;
+    }
+
+    public string FullString()
+    {
         string result = (IsCompleted ? "[COMPLETE] " : "")
             + (IsCanceled ? "[CANCELED] " : "")
             + Name + (string.IsNullOrEmpty(Description) ? "" : "\n" + Description) + "\n";
@@ -34,7 +39,7 @@ public class Entry : TaskItem
         }
         foreach (var item in Items)
         {
-            result += item.ToString();
+            result += item.FullString();
         }
         return result;
     }

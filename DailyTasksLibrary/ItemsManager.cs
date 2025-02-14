@@ -8,7 +8,7 @@ namespace DailyTasksLibrary;
 
 public class ItemsManager
 {
-    List<Entry> entries;
+    public List<Entry> entries;
 
     static DateOnly? currentDate = null;
 
@@ -58,7 +58,7 @@ public class ItemsManager
         int index = 0;
         foreach (var item in entries)
         {
-            Console.WriteLine($"{index++}: {item}");
+            Console.WriteLine($"{index++}: {item.FullString()}");
         }
     }
 
