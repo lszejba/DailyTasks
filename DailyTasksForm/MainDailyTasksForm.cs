@@ -2,10 +2,10 @@ using DailyTasksLibrary;
 
 namespace DailyTasksForm;
 
-public partial class Form1 : Form
+public partial class MainDailyTasksForm : Form
 {
     private ItemsManager manager;
-    public Form1()
+    public MainDailyTasksForm()
     {
         InitializeData();
         InitializeComponent();
@@ -32,5 +32,25 @@ public partial class Form1 : Form
         {
             ChecklistItemNotesListBox.DataSource = selectedItem.Notes;
         }
+    }
+
+    private void AddEntryButton_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void AddChecklistItemButton_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void AddEntryNoteButton_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void AddChecklistItemNoteButton_Click(object sender, EventArgs e)
+    {
+
     }
 }

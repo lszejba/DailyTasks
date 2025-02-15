@@ -2,7 +2,7 @@
 
 namespace DailyTasksForm
 {
-    partial class Form1
+    partial class MainDailyTasksForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -35,6 +35,10 @@ namespace DailyTasksForm
             EntryNotesListBox = new ListBox();
             ChecklistItemNotesListBox = new ListBox();
             label1 = new Label();
+            AddEntryButton = new Button();
+            AddChecklistItemButton = new Button();
+            AddEntryNoteButton = new Button();
+            AddChecklistItemNoteButton = new Button();
             SuspendLayout();
             // 
             // EntriesListBox
@@ -80,21 +84,65 @@ namespace DailyTasksForm
             label1.AutoSize = true;
             label1.Location = new Point(12, 9);
             label1.Name = "label1";
-            label1.Size = new Size(38, 15);
+            label1.Size = new Size(118, 15);
             label1.TabIndex = 4;
-            label1.Text = ItemsManager.CurrentDate.ToString() + " (" + ItemsManager.CurrentDate.DayOfWeek.ToString() + ")";
+            label1.Text = "15.02.2025 (Saturday)";
             // 
-            // Form1
+            // AddEntryButton
+            // 
+            AddEntryButton.Location = new Point(361, 22);
+            AddEntryButton.Name = "AddEntryButton";
+            AddEntryButton.Size = new Size(28, 25);
+            AddEntryButton.TabIndex = 5;
+            AddEntryButton.Text = "+";
+            AddEntryButton.UseVisualStyleBackColor = true;
+            AddEntryButton.Click += AddEntryButton_Click;
+            // 
+            // AddChecklistItemButton
+            // 
+            AddChecklistItemButton.Location = new Point(361, 223);
+            AddChecklistItemButton.Name = "AddChecklistItemButton";
+            AddChecklistItemButton.Size = new Size(28, 25);
+            AddChecklistItemButton.TabIndex = 6;
+            AddChecklistItemButton.Text = "+";
+            AddChecklistItemButton.UseVisualStyleBackColor = true;
+            AddChecklistItemButton.Click += AddChecklistItemButton_Click;
+            // 
+            // AddEntryNoteButton
+            // 
+            AddEntryNoteButton.Location = new Point(761, 22);
+            AddEntryNoteButton.Name = "AddEntryNoteButton";
+            AddEntryNoteButton.Size = new Size(28, 25);
+            AddEntryNoteButton.TabIndex = 7;
+            AddEntryNoteButton.Text = "+";
+            AddEntryNoteButton.UseVisualStyleBackColor = true;
+            AddEntryNoteButton.Click += AddEntryNoteButton_Click;
+            // 
+            // AddChecklistItemNoteButton
+            // 
+            AddChecklistItemNoteButton.Location = new Point(761, 223);
+            AddChecklistItemNoteButton.Name = "AddChecklistItemNoteButton";
+            AddChecklistItemNoteButton.Size = new Size(28, 25);
+            AddChecklistItemNoteButton.TabIndex = 8;
+            AddChecklistItemNoteButton.Text = "+";
+            AddChecklistItemNoteButton.UseVisualStyleBackColor = true;
+            AddChecklistItemNoteButton.Click += AddChecklistItemNoteButton_Click;
+            // 
+            // MainDailyTasksForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(AddChecklistItemNoteButton);
+            Controls.Add(AddEntryNoteButton);
+            Controls.Add(AddChecklistItemButton);
+            Controls.Add(AddEntryButton);
             Controls.Add(label1);
             Controls.Add(ChecklistItemNotesListBox);
             Controls.Add(EntryNotesListBox);
             Controls.Add(ChecklistItemsListBox);
             Controls.Add(EntriesListBox);
-            Name = "Form1";
+            Name = "MainDailyTasksForm";
             Text = "Daily Tasks";
             ResumeLayout(false);
             PerformLayout();
@@ -107,5 +155,9 @@ namespace DailyTasksForm
         private ListBox EntryNotesListBox;
         private ListBox ChecklistItemNotesListBox;
         private Label label1;
+        private Button AddEntryButton;
+        private Button AddChecklistItemButton;
+        private Button AddEntryNoteButton;
+        private Button AddChecklistItemNoteButton;
     }
 }
