@@ -9,12 +9,20 @@ public partial class MainDailyTasksForm : Form
     {
         InitializeData();
         InitializeComponent();
+        InitialSetup();
     }
 
     private void InitializeData()
     {
         manager = new ItemsManager();
         manager.LoadTasks();
+    }
+
+    private void InitialSetup()
+    {
+        label1.Text = ItemsManager.CurrentDate.ToString() + " (" + ItemsManager.CurrentDate.DayOfWeek.ToString() + ")";
+
+        EntriesListBox.DataSource = manager.entries;
     }
 
     private void EntriesListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -36,7 +44,8 @@ public partial class MainDailyTasksForm : Form
 
     private void AddEntryButton_Click(object sender, EventArgs e)
     {
-
+        var newForm = new NewEntryForm(manager);
+        newForm.ShowDialog();
     }
 
     private void AddChecklistItemButton_Click(object sender, EventArgs e)
