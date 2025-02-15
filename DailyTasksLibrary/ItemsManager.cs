@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,12 +10,16 @@ namespace DailyTasksLibrary;
 public class ItemsManager
 {
     public List<Entry> entries;
+    public BindingList<Entry> Entries;
 
     static DateOnly? currentDate = null;
 
     public ItemsManager()
     {
         entries = new List<Entry>();
+        Entries = new BindingList<Entry>();
+        Entries.AddingNew += new AddingNewEventHandler(Entries_AddingNew);
+        Entries.ListChanged += new ListChangedEventHandler(Entries_ListChanged);
     }
 
     public int Count { get { return entries.Count; } }
@@ -37,6 +42,8 @@ public class ItemsManager
         Console.WriteLine($"[DEBUG] new entry with name: {name}, description: {description} and date: {date}");
         Entry entry = new Entry(date, name, description);
         entries.Add(entry);
+        Entries.Add(entry);
+        SaveAll();
     }
 
     /*public void AddItem(int index, string item)
@@ -91,5 +98,20 @@ public class ItemsManager
         {
             entries = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Entry>>(currentStr);
         }
+
+        foreach(Entry entry in entries)
+        {
+            Entries.Add(entry);
+        }
+    }
+
+    private void Entries_AddingNew(object sender, AddingNewEventArgs e)
+    {
+
+    }
+
+    private void Entries_ListChanged(object sender, ListChangedEventArgs e)
+    {
+
     }
 }
