@@ -22,7 +22,7 @@ public partial class MainDailyTasksForm : Form
     {
         label1.Text = ItemsManager.CurrentDate.ToString() + " (" + ItemsManager.CurrentDate.DayOfWeek.ToString() + ")";
 
-        EntriesListBox.DataSource = manager.entries;
+        EntriesListBox.DataSource = manager.Entries;
     }
 
     private void EntriesListBox_SelectedIndexChanged(object sender, EventArgs e)

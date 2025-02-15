@@ -53,13 +53,14 @@
             // 
             // addNewEntryButton
             // 
+            addNewEntryButton.Enabled = false;
             addNewEntryButton.Location = new Point(441, 27);
             addNewEntryButton.Name = "addNewEntryButton";
             addNewEntryButton.Size = new Size(124, 23);
             addNewEntryButton.TabIndex = 3;
             addNewEntryButton.Text = "Add Entry";
             addNewEntryButton.UseVisualStyleBackColor = true;
-            addNewEntryButton.Enabled = false;
+            addNewEntryButton.Click += addNewEntryButton_Click;
             // 
             // NewEntryForm
             // 

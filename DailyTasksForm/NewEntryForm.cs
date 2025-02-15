@@ -24,4 +24,10 @@ public partial class NewEntryForm : Form
     {
         addNewEntryButton.Enabled = entryNameTextBox.Text.Length > 0;
     }
+
+    private void addNewEntryButton_Click(object sender, EventArgs e)
+    {
+        manager.AddEntry(ItemsManager.CurrentDate, entryNameTextBox.Text, string.Empty);
+        this.Close();
+    }
 }
