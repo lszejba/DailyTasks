@@ -13,10 +13,10 @@ namespace DailyTasksForm;
 
 public partial class NewEntryForm : Form
 {
-    ItemsManager manager;
+    ItemsManager _manager;
     public NewEntryForm(ItemsManager manager)
     {
-        this.manager = manager;
+        _manager = manager;
         InitializeComponent();
     }
 
@@ -27,7 +27,7 @@ public partial class NewEntryForm : Form
 
     private void addNewEntryButton_Click(object sender, EventArgs e)
     {
-        manager.AddEntry(ItemsManager.CurrentDate, entryNameTextBox.Text, string.Empty);
+        _manager.AddEntry(ItemsManager.CurrentDate, entryNameTextBox.Text, string.Empty);
         this.Close();
     }
 }

@@ -9,11 +9,10 @@ namespace DailyTasksLibrary;
 
 public class ChecklistItem : TaskItem
 {
-    public ChecklistItem(string value, int seq)
+    public ChecklistItem(DateOnly creationDate, string value, int seq)
     {
         Value = value;
-        DateTime now = DateTime.Now;
-        CreationDate = new DateOnly(now.Year, now.Month, now.Day);
+        CreationDate = creationDate;
         SequenceNumber = seq;
     }
 

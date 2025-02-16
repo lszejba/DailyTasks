@@ -66,7 +66,7 @@ while (true)
                     Console.WriteLine("ERROR: Invalid entry index selected");
                     break;
                 }
-                entry.AddItem(itemItems[1]);
+                manager.AddItem(entry, ItemsManager.CurrentDate, itemItems[1]);
                 break;
             }
         case "cancel entry":

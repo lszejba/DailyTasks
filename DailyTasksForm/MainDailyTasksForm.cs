@@ -50,7 +50,12 @@ public partial class MainDailyTasksForm : Form
 
     private void AddChecklistItemButton_Click(object sender, EventArgs e)
     {
-
+        Entry? entry = EntriesListBox.SelectedItem as Entry;
+        if (entry is not null)
+        {
+            var newForm = new NewChecklistItemForm(manager, entry);
+            newForm.ShowDialog();
+        }
     }
 
     private void AddEntryNoteButton_Click(object sender, EventArgs e)

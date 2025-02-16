@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -14,14 +15,14 @@ public class Entry : TaskItem
         Name = name;
         Description = description;
         CreationDate = date;
-        Items = new List<ChecklistItem>();
+        Items = new BindingList<ChecklistItem>();
     }
 
     public string Name { get; }
 
     public string Description { get; }
 
-    public List<ChecklistItem> Items { get; }
+    public BindingList<ChecklistItem> Items { get; }
 
     public override string ToString()
     {
@@ -44,14 +45,14 @@ public class Entry : TaskItem
         return result;
     }
 
-    public void AddItem(string itemStr)
+    public void AddItem(DateOnly creationDate, string itemStr)
     {
-        AddItem(itemStr, Items.Count * 10);
+        AddItem(creationDate, itemStr, Items.Count * 10);
     }
 
-    public void AddItem(string itemStr, int seq)
+    public void AddItem(DateOnly creationDate, string itemStr, int seq)
     {
-        ChecklistItem item = new ChecklistItem(itemStr, seq/*, this*/);
+        ChecklistItem item = new ChecklistItem(creationDate, itemStr, seq);
         Items.Add(item);
     }
 

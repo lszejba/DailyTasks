@@ -35,9 +35,14 @@ public class ItemsManager
 
     public void AddEntry(DateOnly date, string name, string description)
     {
-        Console.WriteLine($"[DEBUG] new entry with name: {name}, description: {description} and date: {date}");
         Entry entry = new Entry(date, name, description);
         Entries.Add(entry);
+        SaveAll();
+    }
+
+    public void AddItem(Entry parentEntry, DateOnly date, string name)
+    {
+        parentEntry.AddItem(date, name);
         SaveAll();
     }
 
