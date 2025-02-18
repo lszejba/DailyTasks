@@ -46,6 +46,12 @@ public class ItemsManager
         SaveAll();
     }
 
+    public void AddNote(TaskItem item, string note)
+    {
+        item.AddNote(note);
+        SaveAll();
+    }
+
     public Entry? GetItem(int index)
     {
         if (index < 0 || Count == 0 || Count <= index)

@@ -60,11 +60,21 @@ public partial class MainDailyTasksForm : Form
 
     private void AddEntryNoteButton_Click(object sender, EventArgs e)
     {
-
+        Entry? entry = EntriesListBox.SelectedItem as Entry;
+        if (entry is not null)
+        {
+            var newForm = new NewNoteForm(manager, entry);
+            newForm.ShowDialog();
+        }
     }
 
     private void AddChecklistItemNoteButton_Click(object sender, EventArgs e)
     {
-
+        ChecklistItem? item = ChecklistItemsListBox.SelectedItem as ChecklistItem;
+        if (item is not null)
+        {
+            var newForm = new NewNoteForm(manager, item);
+            newForm.ShowDialog();
+        }
     }
 }
