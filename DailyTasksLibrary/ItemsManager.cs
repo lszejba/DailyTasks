@@ -61,6 +61,18 @@ public class ItemsManager
         return Entries[index];
     }
 
+    public void CompleteItem(TaskItem item)
+    {
+        item.Complete(ItemsManager.CurrentDate);
+        SaveAll();
+    }
+
+    public void CancelItem(TaskItem item)
+    {
+        item.Cancel(ItemsManager.CurrentDate);
+        SaveAll();
+    }
+
     public void PrintEntries(DateOnly date = new DateOnly(), bool showCompletedEntries = false)
     {
         int index = 0;

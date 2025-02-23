@@ -5,6 +5,8 @@ namespace DailyTasksForm;
 public partial class MainDailyTasksForm : Form
 {
     private ItemsManager manager;
+    private ContextMenuStrip entriesContextMenu;
+    private ContextMenuStrip checklistItemsContextMenu;
     public MainDailyTasksForm()
     {
         InitializeData();
@@ -23,6 +25,81 @@ public partial class MainDailyTasksForm : Form
         label1.Text = ItemsManager.CurrentDate.ToString() + " (" + ItemsManager.CurrentDate.DayOfWeek.ToString() + ")";
 
         EntriesListBox.DataSource = manager.Entries;
+
+        entriesContextMenu = new ContextMenuStrip();
+        ToolStripMenuItem entriesContextMenuCompleteItem = new ToolStripMenuItem();
+        entriesContextMenuCompleteItem.Name = "entryComplete";
+        entriesContextMenuCompleteItem.Text = "Complete Entry";
+        entriesContextMenu.Items.Add(entriesContextMenuCompleteItem);
+        ToolStripMenuItem entriesContextMenuCancelItem = new ToolStripMenuItem();
+        entriesContextMenuCancelItem.Name = "entryCancel";
+        entriesContextMenuCancelItem.Text = "Cancel Entry";
+        entriesContextMenu.Items.Add(entriesContextMenuCancelItem);
+        entriesContextMenu.ItemClicked += EntriesContextMenu_ItemClicked;
+        EntriesListBox.ContextMenuStrip = entriesContextMenu;
+
+        checklistItemsContextMenu = new ContextMenuStrip();
+        ToolStripMenuItem checklistItemsContextMenuCompleteItem = new ToolStripMenuItem();
+        checklistItemsContextMenuCompleteItem.Name = "checklistItemComplete";
+        checklistItemsContextMenuCompleteItem.Text = "Complete Item";
+        checklistItemsContextMenu.Items.Add(checklistItemsContextMenuCompleteItem);
+        ToolStripMenuItem checklistItemsContextMenuCancelItem = new ToolStripMenuItem();
+        checklistItemsContextMenuCancelItem.Name = "checklistItemCancel";
+        checklistItemsContextMenuCancelItem.Text = "Cancel Item";
+        checklistItemsContextMenu.Items.Add(checklistItemsContextMenuCancelItem);
+        checklistItemsContextMenu.ItemClicked += ChecklistItemsContextMenu_ItemClicked;
+        ChecklistItemsListBox.ContextMenuStrip = checklistItemsContextMenu;
+    }
+
+    private void ChecklistItemsContextMenu_ItemClicked(object? sender, ToolStripItemClickedEventArgs e)
+    {
+        var selectedItem = ChecklistItemsListBox.SelectedItem as ChecklistItem;
+        switch (e.ClickedItem.Name)
+        {
+            case "checklistItemComplete":
+                if (selectedItem is not null)
+                {
+                    manager.CompleteItem(selectedItem);
+                }
+                break;
+            case "checklistItemCancel":
+                if (selectedItem is not null)
+                {
+                    manager.CancelItem(selectedItem);
+                }
+                break;
+            default:
+                break;
+        }
+        ChecklistItemsListBox.DataSource = null;
+        Thread.Sleep(500);
+        ChecklistItemsListBox.DataSource = (EntriesListBox.SelectedItem as Entry).Items;
+    }
+
+    private void EntriesContextMenu_ItemClicked(object? sender, ToolStripItemClickedEventArgs e)
+    {
+        var selectedEntry = EntriesListBox.SelectedItem as Entry;
+        switch (e.ClickedItem.Name)
+        {
+            case "entryComplete":
+                if (selectedEntry is not null)
+                {
+                    manager.CompleteItem(selectedEntry);
+                }
+                break;
+            case "entryCancel":
+                if (selectedEntry is not null)
+                {
+                    manager.CancelItem(selectedEntry);
+                }
+                break;
+            default:
+                break;
+        }
+        EntriesListBox.DataSource = null;
+        Thread.Sleep(500);
+        EntriesListBox.DataSource = manager.Entries;
+        ChecklistItemsListBox.Refresh(); // doesn't work
     }
 
     private void EntriesListBox_SelectedIndexChanged(object sender, EventArgs e)
