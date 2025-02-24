@@ -10,12 +10,14 @@ namespace DailyTasksLibrary;
 public class ItemsManager
 {
     public BindingList<Entry> Entries { get; private set; }
+    public BindingList<Entry> _UnfilteredEntries;
 
     static DateOnly? currentDate = null;
 
     public ItemsManager()
     {
         Entries = new BindingList<Entry>();
+        _UnfilteredEntries = new BindingList<Entry>();
     }
 
     public int Count => Entries.Count;
@@ -86,7 +88,7 @@ public class ItemsManager
     {
         var path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         const string fileName = "dailytasks.json";
-        var current = Newtonsoft.Json.JsonConvert.SerializeObject(Entries, Newtonsoft.Json.Formatting.Indented);
+        var current = Newtonsoft.Json.JsonConvert.SerializeObject(_UnfilteredEntries, Newtonsoft.Json.Formatting.Indented);
         Console.WriteLine(current);
 
         File.WriteAllText(Path.Combine(path, fileName), current);
@@ -108,7 +110,15 @@ public class ItemsManager
 
         if (!string.IsNullOrEmpty(currentStr))
         {
-            Entries = Newtonsoft.Json.JsonConvert.DeserializeObject<BindingList<Entry>>(currentStr);
+            _UnfilteredEntries = Newtonsoft.Json.JsonConvert.DeserializeObject<BindingList<Entry>>(currentStr);
+        }
+
+        foreach (Entry entry in _UnfilteredEntries)
+        {
+            if (!(entry.IsCanceled || entry.IsCompleted))
+            {
+                Entries.Add(entry);
+            }
         }
     }
 }
