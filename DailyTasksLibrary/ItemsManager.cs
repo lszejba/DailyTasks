@@ -39,6 +39,7 @@ public class ItemsManager
     {
         Entry entry = new Entry(date, name, description);
         Entries.Add(entry);
+        _UnfilteredEntries.Add(entry);
         SaveAll();
     }
 
