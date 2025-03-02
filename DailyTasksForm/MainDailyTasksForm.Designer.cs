@@ -30,54 +30,24 @@ namespace DailyTasksForm
         /// </summary>
         private void InitializeComponent()
         {
-            EntriesListBox = new ListBox();
-            ChecklistItemsListBox = new ListBox();
-            EntryNotesListBox = new ListBox();
-            ChecklistItemNotesListBox = new ListBox();
             label1 = new Label();
-            AddEntryButton = new Button();
-            AddChecklistItemButton = new Button();
-            AddEntryNoteButton = new Button();
+            groupBox1 = new GroupBox();
             AddChecklistItemNoteButton = new Button();
+            ChecklistItemNotesListBox = new ListBox();
+            groupBox2 = new GroupBox();
+            AddChecklistItemButton = new Button();
+            ChecklistItemsListBox = new ListBox();
+            groupBox3 = new GroupBox();
+            AddEntryButton = new Button();
+            EntriesListBox = new ListBox();
+            groupBox4 = new GroupBox();
+            AddEntryNoteButton = new Button();
+            EntryNotesListBox = new ListBox();
+            groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
+            groupBox4.SuspendLayout();
             SuspendLayout();
-            // 
-            // EntriesListBox
-            // 
-            EntriesListBox.FormattingEnabled = true;
-            EntriesListBox.ItemHeight = 15;
-            EntriesListBox.Location = new Point(12, 48);
-            EntriesListBox.Name = "EntriesListBox";
-            EntriesListBox.Size = new Size(377, 169);
-            EntriesListBox.TabIndex = 0;
-            EntriesListBox.SelectedIndexChanged += EntriesListBox_SelectedIndexChanged;
-            // 
-            // ChecklistItemsListBox
-            // 
-            ChecklistItemsListBox.FormattingEnabled = true;
-            ChecklistItemsListBox.ItemHeight = 15;
-            ChecklistItemsListBox.Location = new Point(50, 249);
-            ChecklistItemsListBox.Name = "ChecklistItemsListBox";
-            ChecklistItemsListBox.Size = new Size(339, 184);
-            ChecklistItemsListBox.TabIndex = 1;
-            ChecklistItemsListBox.SelectedIndexChanged += ChecklistItemsListBox_SelectedIndexChanged;
-            // 
-            // EntryNotesListBox
-            // 
-            EntryNotesListBox.FormattingEnabled = true;
-            EntryNotesListBox.ItemHeight = 15;
-            EntryNotesListBox.Location = new Point(434, 48);
-            EntryNotesListBox.Name = "EntryNotesListBox";
-            EntryNotesListBox.Size = new Size(354, 169);
-            EntryNotesListBox.TabIndex = 2;
-            // 
-            // ChecklistItemNotesListBox
-            // 
-            ChecklistItemNotesListBox.FormattingEnabled = true;
-            ChecklistItemNotesListBox.ItemHeight = 15;
-            ChecklistItemNotesListBox.Location = new Point(434, 249);
-            ChecklistItemNotesListBox.Name = "ChecklistItemNotesListBox";
-            ChecklistItemNotesListBox.Size = new Size(354, 184);
-            ChecklistItemNotesListBox.TabIndex = 3;
             // 
             // label1
             // 
@@ -87,76 +57,172 @@ namespace DailyTasksForm
             label1.Size = new Size(0, 15);
             label1.TabIndex = 4;
             // 
-            // AddEntryButton
+            // groupBox1
             // 
-            AddEntryButton.Location = new Point(361, 22);
-            AddEntryButton.Name = "AddEntryButton";
-            AddEntryButton.Size = new Size(28, 25);
-            AddEntryButton.TabIndex = 5;
-            AddEntryButton.Text = "+";
-            AddEntryButton.UseVisualStyleBackColor = true;
-            AddEntryButton.Click += AddEntryButton_Click;
+            groupBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            groupBox1.Controls.Add(AddChecklistItemNoteButton);
+            groupBox1.Controls.Add(ChecklistItemNotesListBox);
+            groupBox1.Location = new Point(594, 334);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(560, 287);
+            groupBox1.TabIndex = 9;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "groupBox1";
+            // 
+            // AddChecklistItemNoteButton
+            // 
+            AddChecklistItemNoteButton.Anchor = AnchorStyles.Top;
+            AddChecklistItemNoteButton.Location = new Point(520, 1);
+            AddChecklistItemNoteButton.Name = "AddChecklistItemNoteButton";
+            AddChecklistItemNoteButton.Size = new Size(28, 25);
+            AddChecklistItemNoteButton.TabIndex = 10;
+            AddChecklistItemNoteButton.Text = "+";
+            AddChecklistItemNoteButton.UseVisualStyleBackColor = true;
+            AddChecklistItemNoteButton.Click += AddChecklistItemNoteButton_Click;
+            // 
+            // ChecklistItemNotesListBox
+            // 
+            ChecklistItemNotesListBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            ChecklistItemNotesListBox.FormattingEnabled = true;
+            ChecklistItemNotesListBox.ItemHeight = 15;
+            ChecklistItemNotesListBox.Location = new Point(12, 32);
+            ChecklistItemNotesListBox.Name = "ChecklistItemNotesListBox";
+            ChecklistItemNotesListBox.Size = new Size(536, 244);
+            ChecklistItemNotesListBox.TabIndex = 9;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            groupBox2.Controls.Add(AddChecklistItemButton);
+            groupBox2.Controls.Add(ChecklistItemsListBox);
+            groupBox2.Location = new Point(6, 334);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(559, 288);
+            groupBox2.TabIndex = 10;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "groupBox2";
             // 
             // AddChecklistItemButton
             // 
-            AddChecklistItemButton.Location = new Point(361, 223);
+            AddChecklistItemButton.Anchor = AnchorStyles.Top;
+            AddChecklistItemButton.Location = new Point(525, 1);
             AddChecklistItemButton.Name = "AddChecklistItemButton";
             AddChecklistItemButton.Size = new Size(28, 25);
-            AddChecklistItemButton.TabIndex = 6;
+            AddChecklistItemButton.TabIndex = 8;
             AddChecklistItemButton.Text = "+";
             AddChecklistItemButton.UseVisualStyleBackColor = true;
             AddChecklistItemButton.Click += AddChecklistItemButton_Click;
             // 
+            // ChecklistItemsListBox
+            // 
+            ChecklistItemsListBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            ChecklistItemsListBox.FormattingEnabled = true;
+            ChecklistItemsListBox.ItemHeight = 15;
+            ChecklistItemsListBox.Location = new Point(38, 32);
+            ChecklistItemsListBox.Name = "ChecklistItemsListBox";
+            ChecklistItemsListBox.Size = new Size(515, 244);
+            ChecklistItemsListBox.TabIndex = 7;
+            ChecklistItemsListBox.SelectedIndexChanged += ChecklistItemsListBox_SelectedIndexChanged;
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(AddEntryButton);
+            groupBox3.Controls.Add(EntriesListBox);
+            groupBox3.Location = new Point(6, 23);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(559, 288);
+            groupBox3.TabIndex = 11;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "groupBox3";
+            // 
+            // AddEntryButton
+            // 
+            AddEntryButton.Anchor = AnchorStyles.Top;
+            AddEntryButton.Location = new Point(525, 2);
+            AddEntryButton.Name = "AddEntryButton";
+            AddEntryButton.Size = new Size(28, 25);
+            AddEntryButton.TabIndex = 7;
+            AddEntryButton.Text = "+";
+            AddEntryButton.UseVisualStyleBackColor = true;
+            AddEntryButton.Click += AddEntryButton_Click;
+            // 
+            // EntriesListBox
+            // 
+            EntriesListBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            EntriesListBox.FormattingEnabled = true;
+            EntriesListBox.ItemHeight = 15;
+            EntriesListBox.Location = new Point(3, 30);
+            EntriesListBox.Name = "EntriesListBox";
+            EntriesListBox.Size = new Size(553, 244);
+            EntriesListBox.TabIndex = 6;
+            EntriesListBox.SelectedIndexChanged += EntriesListBox_SelectedIndexChanged;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            groupBox4.Controls.Add(AddEntryNoteButton);
+            groupBox4.Controls.Add(EntryNotesListBox);
+            groupBox4.Location = new Point(594, 23);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(560, 288);
+            groupBox4.TabIndex = 12;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "groupBox4";
+            // 
             // AddEntryNoteButton
             // 
-            AddEntryNoteButton.Location = new Point(761, 22);
+            AddEntryNoteButton.Anchor = AnchorStyles.Top;
+            AddEntryNoteButton.Location = new Point(520, -3);
             AddEntryNoteButton.Name = "AddEntryNoteButton";
             AddEntryNoteButton.Size = new Size(28, 25);
-            AddEntryNoteButton.TabIndex = 7;
+            AddEntryNoteButton.TabIndex = 9;
             AddEntryNoteButton.Text = "+";
             AddEntryNoteButton.UseVisualStyleBackColor = true;
             AddEntryNoteButton.Click += AddEntryNoteButton_Click;
             // 
-            // AddChecklistItemNoteButton
+            // EntryNotesListBox
             // 
-            AddChecklistItemNoteButton.Location = new Point(761, 223);
-            AddChecklistItemNoteButton.Name = "AddChecklistItemNoteButton";
-            AddChecklistItemNoteButton.Size = new Size(28, 25);
-            AddChecklistItemNoteButton.TabIndex = 8;
-            AddChecklistItemNoteButton.Text = "+";
-            AddChecklistItemNoteButton.UseVisualStyleBackColor = true;
-            AddChecklistItemNoteButton.Click += AddChecklistItemNoteButton_Click;
+            EntryNotesListBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            EntryNotesListBox.FormattingEnabled = true;
+            EntryNotesListBox.ItemHeight = 15;
+            EntryNotesListBox.Location = new Point(12, 28);
+            EntryNotesListBox.Name = "EntryNotesListBox";
+            EntryNotesListBox.Size = new Size(536, 244);
+            EntryNotesListBox.TabIndex = 8;
             // 
             // MainDailyTasksForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(AddChecklistItemNoteButton);
-            Controls.Add(AddEntryNoteButton);
-            Controls.Add(AddChecklistItemButton);
-            Controls.Add(AddEntryButton);
+            ClientSize = new Size(1165, 627);
+            Controls.Add(groupBox4);
+            Controls.Add(groupBox3);
+            Controls.Add(groupBox2);
+            Controls.Add(groupBox1);
             Controls.Add(label1);
-            Controls.Add(ChecklistItemNotesListBox);
-            Controls.Add(EntryNotesListBox);
-            Controls.Add(ChecklistItemsListBox);
-            Controls.Add(EntriesListBox);
             Name = "MainDailyTasksForm";
             Text = "Daily Tasks";
+            groupBox1.ResumeLayout(false);
+            groupBox2.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
+            groupBox4.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private ListBox EntriesListBox;
-        private ListBox ChecklistItemsListBox;
-        private ListBox EntryNotesListBox;
-        private ListBox ChecklistItemNotesListBox;
         private Label label1;
-        private Button AddEntryButton;
-        private Button AddChecklistItemButton;
-        private Button AddEntryNoteButton;
+        private GroupBox groupBox1;
         private Button AddChecklistItemNoteButton;
+        private ListBox ChecklistItemNotesListBox;
+        private GroupBox groupBox2;
+        private Button AddChecklistItemButton;
+        private ListBox ChecklistItemsListBox;
+        private GroupBox groupBox3;
+        private Button AddEntryButton;
+        private ListBox EntriesListBox;
+        private GroupBox groupBox4;
+        private Button AddEntryNoteButton;
+        private ListBox EntryNotesListBox;
     }
 }
