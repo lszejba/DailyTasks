@@ -116,12 +116,14 @@ namespace DailyTasksForm
             // ChecklistItemsListBox
             // 
             ChecklistItemsListBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            ChecklistItemsListBox.DrawMode = DrawMode.OwnerDrawFixed;
             ChecklistItemsListBox.FormattingEnabled = true;
             ChecklistItemsListBox.ItemHeight = 15;
             ChecklistItemsListBox.Location = new Point(38, 32);
             ChecklistItemsListBox.Name = "ChecklistItemsListBox";
             ChecklistItemsListBox.Size = new Size(515, 244);
             ChecklistItemsListBox.TabIndex = 7;
+            ChecklistItemsListBox.DrawItem += ChecklistItemsListBox_DrawItem;
             ChecklistItemsListBox.SelectedIndexChanged += ChecklistItemsListBox_SelectedIndexChanged;
             // 
             // groupBox3
@@ -149,12 +151,14 @@ namespace DailyTasksForm
             // EntriesListBox
             // 
             EntriesListBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            EntriesListBox.DrawMode = DrawMode.OwnerDrawFixed;
             EntriesListBox.FormattingEnabled = true;
             EntriesListBox.ItemHeight = 15;
             EntriesListBox.Location = new Point(3, 30);
             EntriesListBox.Name = "EntriesListBox";
             EntriesListBox.Size = new Size(553, 244);
             EntriesListBox.TabIndex = 6;
+            EntriesListBox.DrawItem += EntriesListBox_DrawItem;
             EntriesListBox.SelectedIndexChanged += EntriesListBox_SelectedIndexChanged;
             // 
             // groupBox4

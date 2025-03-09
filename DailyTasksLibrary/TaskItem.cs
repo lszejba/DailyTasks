@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,5 +31,16 @@ public abstract class TaskItem
             Notes = new BindingList<string>();
         }
         Notes.Add(note);
+    }
+
+    public Color GetColor()
+    {
+        Color result = Color.Black;
+
+        if (IsCanceled) result = Color.LightGray;
+        if (IsCompleted) result = Color.Green;
+        if (IsExpired) result = Color.Orange;
+
+        return result;
     }
 }

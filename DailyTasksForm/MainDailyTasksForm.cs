@@ -154,4 +154,51 @@ public partial class MainDailyTasksForm : Form
             newForm.ShowDialog();
         }
     }
+
+    private void EntriesListBox_DrawItem(object sender, DrawItemEventArgs e)
+    {
+        if (e.Index < 0) return;
+        TaskItem item = (TaskItem)EntriesListBox.Items[e.Index];
+        Color c = item.GetColor();
+        SolidBrush foreBrush = new SolidBrush(c);
+        SolidBrush backBrush = new SolidBrush(e.BackColor);
+        e.Graphics.FillRectangle(backBrush, e.Bounds);
+        e.Graphics.DrawString(item.ToString(), e.Font, foreBrush, e.Bounds, StringFormat.GenericDefault);
+
+        backBrush.Dispose();
+        foreBrush.Dispose();
+    }
+
+    private void ChecklistItemsListBox_DrawItem(object sender, DrawItemEventArgs e)
+    {
+        if (e.Index < 0) return;
+        TaskItem item = (TaskItem)ChecklistItemsListBox.Items[e.Index];
+        Color c = item.GetColor();
+        SolidBrush foreBrush = new SolidBrush(c);
+        SolidBrush backBrush = new SolidBrush(e.BackColor);
+        e.Graphics.FillRectangle(backBrush, e.Bounds);
+        e.Graphics.DrawString(item.ToString(), e.Font, foreBrush, e.Bounds, StringFormat.GenericDefault);
+
+        backBrush.Dispose();
+        foreBrush.Dispose();
+    }
 }
+
+/*public class CustomListBox : ListBox
+{
+    protected override void OnDrawItem(DrawItemEventArgs e)
+    {
+        var foreColor = ((TaskItem)Items[e.Index]).GetColor();
+
+        var tweakedEventsArgs = new DrawItemEventArgs(
+            e.Graphics,
+            e.Font,
+            e.Bounds,
+            e.Index,
+            e.State,
+            foreColor,
+            e.BackColor
+            );
+        base.OnDrawItem(tweakedEventsArgs);
+    }
+}*/

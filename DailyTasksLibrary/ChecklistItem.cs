@@ -37,7 +37,7 @@ public class ChecklistItem : TaskItem
 
     public override string ToString()
     {
-        return (IsCompleted ? "[COMPLETE] " : "") + (IsCanceled ? "[CANCELED] " : "") + Value;
+        return Value;
     }
 
     public string FullString()

@@ -26,7 +26,7 @@ public class Entry : TaskItem
 
     public override string ToString()
     {
-        return (IsCompleted ? "[COMPLETE] " : "") + (IsCanceled ? "[CANCELED] " : "") + Name;
+        return Name;
     }
 
     public string FullString()
