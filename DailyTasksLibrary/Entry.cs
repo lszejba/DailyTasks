@@ -10,11 +10,10 @@ namespace DailyTasksLibrary;
 
 public class Entry : TaskItem
 {
-    public Entry(DateOnly date, string name, string description)
+    public Entry(DateOnly creationDate, string name, string description) : base(creationDate)
     {
         Name = name;
         Description = description;
-        CreationDate = date;
         Items = new BindingList<ChecklistItem>();
     }
 
@@ -24,10 +23,7 @@ public class Entry : TaskItem
 
     public BindingList<ChecklistItem> Items { get; }
 
-    public override string ToString()
-    {
-        return Name;
-    }
+    public override string ToString() => Name;
 
     public string FullString()
     {
@@ -45,18 +41,13 @@ public class Entry : TaskItem
         return result;
     }
 
-    public void AddItem(DateOnly creationDate, string itemStr)
-    {
-        AddItem(creationDate, itemStr, Items.Count * 10);
-    }
+    public void AddItem(DateOnly creationDate, string itemStr) => AddItem(creationDate, itemStr, Items.Count * 10);
 
     public void AddItem(DateOnly creationDate, string itemStr, int seq)
     {
         ChecklistItem item = new ChecklistItem(creationDate, itemStr, seq);
         Items.Add(item);
     }
-
-    //List<ChecklistItem> items;
 
     public ChecklistItem? GetItem(int index)
     {

@@ -10,6 +10,12 @@ namespace DailyTasksLibrary;
 
 public abstract class TaskItem
 {
+    protected TaskItem(DateOnly creationDate)
+    {
+        CreationDate = creationDate;
+        Notes = [];
+    }
+
     public bool IsCompleted => (CompletionDate != null && CompletionDate <= ItemsManager.CurrentDate);
     public bool IsCanceled => (CancelationDate != null && CancelationDate <= ItemsManager.CurrentDate);
     public bool IsExpired => false;
@@ -18,18 +24,14 @@ public abstract class TaskItem
     public DateOnly? CancelationDate { get; set; }
     public DateOnly? ExpirationDate { get; set; }
 
-    public BindingList<string>? Notes { get; set; }
+    public BindingList<string> Notes { get; set; }
 
     public abstract void Complete(DateOnly completionDate);
 
     public abstract void Cancel(DateOnly cancelationDate);
 
-    public virtual void AddNote(string note)
+    public void AddNote(string note)
     {
-        if (Notes == null)
-        {
-            Notes = new BindingList<string>();
-        }
         Notes.Add(note);
     }
 

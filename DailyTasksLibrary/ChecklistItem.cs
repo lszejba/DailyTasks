@@ -9,19 +9,15 @@ namespace DailyTasksLibrary;
 
 public class ChecklistItem : TaskItem
 {
-    public ChecklistItem(DateOnly creationDate, string value, int seq)
+    public ChecklistItem(DateOnly creationDate, string value, int seq) : base(creationDate)
     {
         Value = value;
-        CreationDate = creationDate;
         SequenceNumber = seq;
     }
 
     public string Value { get; }
 
     public int SequenceNumber { get; set; }
-
-    //[JsonIgnore]
-    //public Entry Parent { get; }
 
     public override void Cancel(DateOnly cancelationDate)
     {
@@ -35,10 +31,7 @@ public class ChecklistItem : TaskItem
         CompletionDate = completionDate;
     }
 
-    public override string ToString()
-    {
-        return Value;
-    }
+    public override string ToString() => Value;
 
     public string FullString()
     {
