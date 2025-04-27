@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             ParentNameLabel = new Label();
-            AddNoteButton = new Button();
-            NoteTextBox = new TextBox();
+            EditNoteButton = new Button();
+            NoteRTFBox = new RichTextBox();
             SuspendLayout();
             // 
             // ParentNameLabel
@@ -43,33 +43,34 @@
             // 
             // AddNoteButton
             // 
-            AddNoteButton.Enabled = false;
-            AddNoteButton.Location = new Point(428, 27);
-            AddNoteButton.Name = "AddNoteButton";
-            AddNoteButton.Size = new Size(98, 23);
-            AddNoteButton.TabIndex = 1;
-            AddNoteButton.Text = "Add Note";
-            AddNoteButton.UseVisualStyleBackColor = true;
-            AddNoteButton.Click += AddNoteButton_Click;
+            EditNoteButton.Enabled = false;
+            EditNoteButton.Location = new Point(429, 12);
+            EditNoteButton.Name = "AddNoteButton";
+            EditNoteButton.Size = new Size(98, 23);
+            EditNoteButton.TabIndex = 1;
+            EditNoteButton.Text = "Save note";
+            EditNoteButton.UseVisualStyleBackColor = true;
+            EditNoteButton.Click += EditNoteButton_Click;
             // 
-            // NoteTextBox
+            // NoteRTFBox
             // 
-            NoteTextBox.Location = new Point(9, 27);
-            NoteTextBox.Name = "NoteTextBox";
-            NoteTextBox.Size = new Size(413, 23);
-            NoteTextBox.TabIndex = 2;
-            NoteTextBox.TextChanged += NodeTextBox_TextChanged;
+            NoteRTFBox.Location = new Point(9, 12);
+            NoteRTFBox.Name = "NoteRTFBox";
+            NoteRTFBox.Size = new Size(413, 103);
+            NoteRTFBox.TabIndex = 3;
+            NoteRTFBox.Text = "";
+            NoteRTFBox.TextChanged += NoteRTFBox_TextChanged;
             // 
             // NewNoteForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(539, 70);
-            Controls.Add(NoteTextBox);
-            Controls.Add(AddNoteButton);
+            ClientSize = new Size(539, 127);
+            Controls.Add(NoteRTFBox);
+            Controls.Add(EditNoteButton);
             Controls.Add(ParentNameLabel);
             Name = "NewNoteForm";
-            Text = "Add new note";
+            Text = "Edit note";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -77,7 +78,7 @@
         #endregion
 
         private Label ParentNameLabel;
-        private Button AddNoteButton;
-        private TextBox NoteTextBox;
+        private Button EditNoteButton;
+        private RichTextBox NoteRTFBox;
     }
 }

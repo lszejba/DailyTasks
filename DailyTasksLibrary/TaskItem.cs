@@ -13,7 +13,8 @@ public abstract class TaskItem
     protected TaskItem(DateOnly creationDate)
     {
         CreationDate = creationDate;
-        Notes = [];
+        //Notes = [];
+        //RTFNote = new Note(creationDate, string.Empty);
     }
 
     public bool IsCompleted => (CompletionDate != null && CompletionDate <= ItemsManager.CurrentDate);
@@ -25,6 +26,9 @@ public abstract class TaskItem
     public DateOnly? ExpirationDate { get; set; }
 
     public BindingList<string> Notes { get; set; }
+    //public Note RTFNote { get; }
+
+    public string Note { get; set; }
 
     public abstract void Complete(DateOnly completionDate);
 
@@ -32,7 +36,11 @@ public abstract class TaskItem
 
     public void AddNote(string note)
     {
-        Notes.Add(note);
+        Note = note;
+        //RTFNote = new Note(ItemsManager.CurrentDate, rtfText);
+        //RTFNote.RTFText = rtfText;
+        //RTFNotes.Add(note);
+        //Notes.Add(note);
     }
 
     public Color GetColor()

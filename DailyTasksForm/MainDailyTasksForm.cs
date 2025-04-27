@@ -1,4 +1,5 @@
 using DailyTasksLibrary;
+using System.Text;
 
 namespace DailyTasksForm;
 
@@ -107,7 +108,15 @@ public partial class MainDailyTasksForm : Form
         if (EntriesListBox.SelectedItem is Entry selectedEntry)
         {
             ChecklistItemsListBox.DataSource = selectedEntry.Items;
-            EntryNotesListBox.DataSource = selectedEntry.Notes;
+            //EntryNotesListBox.DataSource = selectedEntry.Notes;
+            //StringBuilder sb = new StringBuilder();
+            //sb.Append(@"{\rtf1\ansi ");
+            //foreach (var note in selectedEntry.RTFNotes)//(string note in selectedEntry.Notes)
+            //{
+            //    sb.Append(note.RTFText + @"\par\r\n ");
+            //}
+            //sb.Append(@"}");
+            EntriesNotesRichTextBox.Rtf = selectedEntry.Note;// RTFNote.RTFText;//sb.ToString();
         }
     }
 
@@ -115,7 +124,8 @@ public partial class MainDailyTasksForm : Form
     {
         if (ChecklistItemsListBox.SelectedItem is ChecklistItem selectedItem)
         {
-            ChecklistItemNotesListBox.DataSource = selectedItem.Notes;
+            //ChecklistItemNotesListBox.DataSource = selectedItem.Notes;
+            ChecklistItemNotesRichTextBox.Rtf = selectedItem.Note;// RTFNote.RTFText;
         }
     }
 
@@ -183,22 +193,3 @@ public partial class MainDailyTasksForm : Form
         foreBrush.Dispose();
     }
 }
-
-/*public class CustomListBox : ListBox
-{
-    protected override void OnDrawItem(DrawItemEventArgs e)
-    {
-        var foreColor = ((TaskItem)Items[e.Index]).GetColor();
-
-        var tweakedEventsArgs = new DrawItemEventArgs(
-            e.Graphics,
-            e.Font,
-            e.Bounds,
-            e.Index,
-            e.State,
-            foreColor,
-            e.BackColor
-            );
-        base.OnDrawItem(tweakedEventsArgs);
-    }
-}*/

@@ -49,11 +49,18 @@ public class ItemsManager
         SaveAll();
     }
 
-    public void AddNote(TaskItem item, string note)
+    public void AddNote(TaskItem item, string note/*, string rtfNote*/)
     {
-        item.AddNote(note);
+        //item.AddNote(note, rtfNote);
+        //item.RTFNote.RTFText = rtfNote;
+        item.Note = note;
         SaveAll();
     }
+
+    /*public void AddRTFNote(TaskItem item)
+    {
+        throw new NotImplementedException();
+    }*/
 
     public Entry? GetItem(int index)
     {

@@ -175,12 +175,12 @@ while (true)
                 switch (noteItems.Length)
                 {
                     case 2:
-                        entry.AddNote(noteItems[1]);
+                        entry.Note = noteItems[1];
                         break;
                     case 3:
                         int itemIndex = int.Parse(noteItems[1]);
                         ChecklistItem? checklistItem = entry.GetItem(itemIndex);
-                        checklistItem?.AddNote(noteItems[2]);
+                        checklistItem.Note = noteItems[2];
                         break;
                     default:
                         Console.WriteLine("ERROR: Invalid format");
