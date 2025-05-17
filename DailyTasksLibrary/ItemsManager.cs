@@ -10,7 +10,7 @@ namespace DailyTasksLibrary;
 public class ItemsManager
 {
     public BindingList<Entry> Entries { get; private set; }
-    public BindingList<Entry> _UnfilteredEntries;
+    public BindingList<Entry>? _UnfilteredEntries;
 
     static DateOnly? currentDate = null;
 
@@ -39,7 +39,7 @@ public class ItemsManager
     {
         Entry entry = new Entry(date, name, description);
         Entries.Add(entry);
-        _UnfilteredEntries.Add(entry);
+        _UnfilteredEntries?.Add(entry);
         SaveAll();
     }
 
@@ -49,18 +49,11 @@ public class ItemsManager
         SaveAll();
     }
 
-    public void AddNote(TaskItem item, string note/*, string rtfNote*/)
+    public void AddNote(TaskItem item, string note)
     {
-        //item.AddNote(note, rtfNote);
-        //item.RTFNote.RTFText = rtfNote;
         item.Note = note;
         SaveAll();
     }
-
-    /*public void AddRTFNote(TaskItem item)
-    {
-        throw new NotImplementedException();
-    }*/
 
     public Entry? GetItem(int index)
     {
@@ -119,6 +112,11 @@ public class ItemsManager
         if (!string.IsNullOrEmpty(currentStr))
         {
             _UnfilteredEntries = Newtonsoft.Json.JsonConvert.DeserializeObject<BindingList<Entry>>(currentStr);
+        }
+
+        if (_UnfilteredEntries is null)
+        {
+            return;
         }
 
         foreach (Entry entry in _UnfilteredEntries)

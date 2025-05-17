@@ -108,15 +108,7 @@ public partial class MainDailyTasksForm : Form
         if (EntriesListBox.SelectedItem is Entry selectedEntry)
         {
             ChecklistItemsListBox.DataSource = selectedEntry.Items;
-            //EntryNotesListBox.DataSource = selectedEntry.Notes;
-            //StringBuilder sb = new StringBuilder();
-            //sb.Append(@"{\rtf1\ansi ");
-            //foreach (var note in selectedEntry.RTFNotes)//(string note in selectedEntry.Notes)
-            //{
-            //    sb.Append(note.RTFText + @"\par\r\n ");
-            //}
-            //sb.Append(@"}");
-            EntriesNotesRichTextBox.Rtf = selectedEntry.Note;// RTFNote.RTFText;//sb.ToString();
+            EntriesNotesRichTextBox.Rtf = selectedEntry.Note;
         }
     }
 
@@ -124,8 +116,7 @@ public partial class MainDailyTasksForm : Form
     {
         if (ChecklistItemsListBox.SelectedItem is ChecklistItem selectedItem)
         {
-            //ChecklistItemNotesListBox.DataSource = selectedItem.Notes;
-            ChecklistItemNotesRichTextBox.Rtf = selectedItem.Note;// RTFNote.RTFText;
+            ChecklistItemNotesRichTextBox.Rtf = selectedItem.Note;
         }
     }
 

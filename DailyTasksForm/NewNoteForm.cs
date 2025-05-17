@@ -21,13 +21,8 @@ namespace DailyTasksForm
             _parent = parent;
             InitializeComponent();
             ParentNameLabel.Text = "Parent: " + _parent.ToString() + "[" + _parent.GetType().Name + "]";
-            NoteRTFBox.Rtf = /*parent.RTFNote.RTFText*/parent.Note ?? "";
+            NoteRTFBox.Rtf = parent.Note ?? "";
         }
-
-        /*public void NodeTextBox_TextChanged(object sender, EventArgs e)
-        {
-            EditNoteButton.Enabled = NoteTextBox.Text.Length > 0; //NoteRTFBox.Rtf.Length > 0 || NoteRTFBox.Text.Length > 0;
-        }*/
 
         public void NoteRTFBox_TextChanged(object sender, EventArgs e)
         {
@@ -36,8 +31,7 @@ namespace DailyTasksForm
 
         private void EditNoteButton_Click(object sender, EventArgs e)
         {
-            _manager.AddNote(_parent/*, NoteTextBox.Text*/, NoteRTFBox.Rtf);
-            //var rtf = NoteRTFBox.Rtf;
+            _manager.AddNote(_parent, NoteRTFBox.Rtf ?? string.Empty);
             this.Close();
         }
     }
