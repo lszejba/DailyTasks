@@ -48,6 +48,7 @@ namespace DailyTasksForm
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Consolas", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 238);
             label1.Location = new Point(12, 9);
             label1.Name = "label1";
             label1.Size = new Size(0, 15);
@@ -56,7 +57,7 @@ namespace DailyTasksForm
             // AddChecklistItemNoteButton
             // 
             AddChecklistItemNoteButton.Anchor = AnchorStyles.Top;
-            AddChecklistItemNoteButton.Location = new Point(1173, 335);
+            AddChecklistItemNoteButton.Location = new Point(681, 442);
             AddChecklistItemNoteButton.Name = "AddChecklistItemNoteButton";
             AddChecklistItemNoteButton.Size = new Size(65, 25);
             AddChecklistItemNoteButton.TabIndex = 10;
@@ -69,9 +70,9 @@ namespace DailyTasksForm
             groupBox2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             groupBox2.Controls.Add(AddChecklistItemButton);
             groupBox2.Controls.Add(ChecklistItemsListBox);
-            groupBox2.Location = new Point(6, 334);
+            groupBox2.Location = new Point(6, 442);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(559, 288);
+            groupBox2.Size = new Size(666, 414);
             groupBox2.TabIndex = 10;
             groupBox2.TabStop = false;
             groupBox2.Text = "Checklist Items";
@@ -79,7 +80,7 @@ namespace DailyTasksForm
             // AddChecklistItemButton
             // 
             AddChecklistItemButton.Anchor = AnchorStyles.Top;
-            AddChecklistItemButton.Location = new Point(525, 1);
+            AddChecklistItemButton.Location = new Point(579, 1);
             AddChecklistItemButton.Name = "AddChecklistItemButton";
             AddChecklistItemButton.Size = new Size(28, 25);
             AddChecklistItemButton.TabIndex = 8;
@@ -91,11 +92,12 @@ namespace DailyTasksForm
             // 
             ChecklistItemsListBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ChecklistItemsListBox.DrawMode = DrawMode.OwnerDrawFixed;
+            ChecklistItemsListBox.Font = new Font("Consolas", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 238);
             ChecklistItemsListBox.FormattingEnabled = true;
-            ChecklistItemsListBox.ItemHeight = 15;
+            ChecklistItemsListBox.ItemHeight = 18;
             ChecklistItemsListBox.Location = new Point(38, 32);
             ChecklistItemsListBox.Name = "ChecklistItemsListBox";
-            ChecklistItemsListBox.Size = new Size(515, 244);
+            ChecklistItemsListBox.Size = new Size(622, 364);
             ChecklistItemsListBox.TabIndex = 7;
             ChecklistItemsListBox.DrawItem += ChecklistItemsListBox_DrawItem;
             ChecklistItemsListBox.SelectedIndexChanged += ChecklistItemsListBox_SelectedIndexChanged;
@@ -106,7 +108,7 @@ namespace DailyTasksForm
             groupBox3.Controls.Add(EntriesListBox);
             groupBox3.Location = new Point(6, 23);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(559, 288);
+            groupBox3.Size = new Size(669, 413);
             groupBox3.TabIndex = 11;
             groupBox3.TabStop = false;
             groupBox3.Text = "Entries";
@@ -114,7 +116,7 @@ namespace DailyTasksForm
             // AddEntryButton
             // 
             AddEntryButton.Anchor = AnchorStyles.Top;
-            AddEntryButton.Location = new Point(525, 2);
+            AddEntryButton.Location = new Point(580, 2);
             AddEntryButton.Name = "AddEntryButton";
             AddEntryButton.Size = new Size(28, 25);
             AddEntryButton.TabIndex = 7;
@@ -126,35 +128,38 @@ namespace DailyTasksForm
             // 
             EntriesListBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             EntriesListBox.DrawMode = DrawMode.OwnerDrawFixed;
+            EntriesListBox.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 238);
             EntriesListBox.FormattingEnabled = true;
-            EntriesListBox.ItemHeight = 15;
+            EntriesListBox.ItemHeight = 20;
             EntriesListBox.Location = new Point(3, 30);
             EntriesListBox.Name = "EntriesListBox";
-            EntriesListBox.Size = new Size(553, 244);
+            EntriesListBox.Size = new Size(663, 364);
             EntriesListBox.TabIndex = 6;
             EntriesListBox.DrawItem += EntriesListBox_DrawItem;
             EntriesListBox.SelectedIndexChanged += EntriesListBox_SelectedIndexChanged;
             // 
             // EntriesNotesRichTextBox
             // 
-            EntriesNotesRichTextBox.Location = new Point(583, 53);
+            EntriesNotesRichTextBox.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            EntriesNotesRichTextBox.Location = new Point(681, 56);
             EntriesNotesRichTextBox.Name = "EntriesNotesRichTextBox";
-            EntriesNotesRichTextBox.Size = new Size(655, 244);
+            EntriesNotesRichTextBox.Size = new Size(691, 361);
             EntriesNotesRichTextBox.TabIndex = 13;
             EntriesNotesRichTextBox.Text = "";
             // 
             // ChecklistItemNotesRichTextBox
             // 
-            ChecklistItemNotesRichTextBox.Location = new Point(583, 366);
+            ChecklistItemNotesRichTextBox.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            ChecklistItemNotesRichTextBox.Location = new Point(681, 474);
             ChecklistItemNotesRichTextBox.Name = "ChecklistItemNotesRichTextBox";
-            ChecklistItemNotesRichTextBox.Size = new Size(655, 244);
+            ChecklistItemNotesRichTextBox.Size = new Size(691, 364);
             ChecklistItemNotesRichTextBox.TabIndex = 14;
             ChecklistItemNotesRichTextBox.Text = "";
             // 
             // AddEntryNoteButton
             // 
             AddEntryNoteButton.Anchor = AnchorStyles.Top;
-            AddEntryNoteButton.Location = new Point(1173, 25);
+            AddEntryNoteButton.Location = new Point(681, 23);
             AddEntryNoteButton.Name = "AddEntryNoteButton";
             AddEntryNoteButton.Size = new Size(65, 25);
             AddEntryNoteButton.TabIndex = 9;
@@ -166,7 +171,7 @@ namespace DailyTasksForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1249, 627);
+            ClientSize = new Size(1384, 861);
             Controls.Add(AddChecklistItemNoteButton);
             Controls.Add(AddEntryNoteButton);
             Controls.Add(ChecklistItemNotesRichTextBox);
@@ -174,7 +179,11 @@ namespace DailyTasksForm
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "MainDailyTasksForm";
+            SizeGripStyle = SizeGripStyle.Hide;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Daily Tasks";
             groupBox2.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
