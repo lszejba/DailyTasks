@@ -30,6 +30,7 @@ namespace DailyTasksForm
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainDailyTasksForm));
             label1 = new Label();
             AddChecklistItemNoteButton = new Button();
             groupBox2 = new GroupBox();
@@ -180,6 +181,7 @@ namespace DailyTasksForm
             Controls.Add(groupBox2);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "MainDailyTasksForm";
             SizeGripStyle = SizeGripStyle.Hide;
