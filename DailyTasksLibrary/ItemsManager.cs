@@ -7,10 +7,24 @@ using System.Threading.Tasks;
 
 namespace DailyTasksLibrary;
 
+public class JSONContents
+{
+    public BindingList<Entry>? Entries;
+    public string Version { get; set; }
+
+    public JSONContents()
+    {
+        Entries = new BindingList<Entry>();
+        Version = "?";
+    }
+}
+
 public class ItemsManager
 {
     public BindingList<Entry> Entries { get; private set; }
     public BindingList<Entry>? _UnfilteredEntries;
+
+    private JSONContents? _jsonContents;
 
     static DateOnly? currentDate = null;
 
@@ -18,6 +32,8 @@ public class ItemsManager
     {
         Entries = new BindingList<Entry>();
         _UnfilteredEntries = new BindingList<Entry>();
+
+        _jsonContents = new JSONContents();
     }
 
     public int Count => Entries.Count;
@@ -40,6 +56,7 @@ public class ItemsManager
         Entry entry = new Entry(date, name, description);
         Entries.Add(entry);
         _UnfilteredEntries?.Add(entry);
+        _jsonContents?.Entries?.Add(entry);
         SaveAll();
     }
 
@@ -89,8 +106,7 @@ public class ItemsManager
     {
         var path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         const string fileName = "dailytasks.json";
-        var current = Newtonsoft.Json.JsonConvert.SerializeObject(_UnfilteredEntries, Newtonsoft.Json.Formatting.Indented);
-        Console.WriteLine(current);
+        var current = Newtonsoft.Json.JsonConvert.SerializeObject(_jsonContents, Newtonsoft.Json.Formatting.Indented);
 
         File.WriteAllText(Path.Combine(path, fileName), current);
         Console.WriteLine($"Tasks saved to {path}");
@@ -107,24 +123,37 @@ public class ItemsManager
         }
 
         var currentStr = File.ReadAllText(fullPath);
-        Console.WriteLine(currentStr);
 
         if (!string.IsNullOrEmpty(currentStr))
         {
-            _UnfilteredEntries = Newtonsoft.Json.JsonConvert.DeserializeObject<BindingList<Entry>>(currentStr);
+            _jsonContents = Newtonsoft.Json.JsonConvert.DeserializeObject<JSONContents>(currentStr);
         }
 
-        if (_UnfilteredEntries is null)
+        if (_jsonContents is null)
         {
             return;
         }
 
-        foreach (Entry entry in _UnfilteredEntries)
+        foreach (Entry? entry in _jsonContents.Entries)
         {
             if (!(entry.IsCanceled || entry.IsCompleted))
             {
                 Entries.Add(entry);
             }
         }
+
+        UpdateVersion();
     }
+
+    void UpdateVersion()
+    {
+        if (_jsonContents is not null || _jsonContents?.Version == CurrentVersion)
+        {
+            return;
+        }
+        // Perform any updates needed between versions
+        _jsonContents.Version = CurrentVersion;
+    }
+
+    const string CurrentVersion = "1.0";
 }

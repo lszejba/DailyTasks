@@ -81,7 +81,7 @@ namespace DailyTasksForm
             // AddChecklistItemButton
             // 
             AddChecklistItemButton.Anchor = AnchorStyles.Top;
-            AddChecklistItemButton.Location = new Point(579, 1);
+            AddChecklistItemButton.Location = new Point(635, 0);
             AddChecklistItemButton.Name = "AddChecklistItemButton";
             AddChecklistItemButton.Size = new Size(28, 25);
             AddChecklistItemButton.TabIndex = 8;
@@ -92,8 +92,9 @@ namespace DailyTasksForm
             // ChecklistItemsListBox
             // 
             ChecklistItemsListBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            ChecklistItemsListBox.BackColor = Color.Silver;
             ChecklistItemsListBox.DrawMode = DrawMode.OwnerDrawFixed;
-            ChecklistItemsListBox.Font = new Font("Consolas", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            ChecklistItemsListBox.Font = new Font("Consolas", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 238);
             ChecklistItemsListBox.FormattingEnabled = true;
             ChecklistItemsListBox.ItemHeight = 18;
             ChecklistItemsListBox.Location = new Point(38, 32);
@@ -117,7 +118,7 @@ namespace DailyTasksForm
             // AddEntryButton
             // 
             AddEntryButton.Anchor = AnchorStyles.Top;
-            AddEntryButton.Location = new Point(580, 2);
+            AddEntryButton.Location = new Point(635, 0);
             AddEntryButton.Name = "AddEntryButton";
             AddEntryButton.Size = new Size(28, 25);
             AddEntryButton.TabIndex = 7;
@@ -128,8 +129,9 @@ namespace DailyTasksForm
             // EntriesListBox
             // 
             EntriesListBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            EntriesListBox.BackColor = Color.Silver;
             EntriesListBox.DrawMode = DrawMode.OwnerDrawFixed;
-            EntriesListBox.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            EntriesListBox.Font = new Font("Consolas", 12F, FontStyle.Bold, GraphicsUnit.Point, 238);
             EntriesListBox.FormattingEnabled = true;
             EntriesListBox.ItemHeight = 20;
             EntriesListBox.Location = new Point(3, 30);
