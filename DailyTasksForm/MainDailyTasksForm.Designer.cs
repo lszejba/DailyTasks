@@ -73,7 +73,7 @@ namespace DailyTasksForm
             groupBox2.Controls.Add(ChecklistItemsListBox);
             groupBox2.Location = new Point(6, 442);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(666, 414);
+            groupBox2.Size = new Size(666, 514);
             groupBox2.TabIndex = 10;
             groupBox2.TabStop = false;
             groupBox2.Text = "Checklist Items";
@@ -99,7 +99,7 @@ namespace DailyTasksForm
             ChecklistItemsListBox.ItemHeight = 18;
             ChecklistItemsListBox.Location = new Point(38, 32);
             ChecklistItemsListBox.Name = "ChecklistItemsListBox";
-            ChecklistItemsListBox.Size = new Size(622, 364);
+            ChecklistItemsListBox.Size = new Size(622, 454);
             ChecklistItemsListBox.TabIndex = 7;
             ChecklistItemsListBox.DrawItem += ChecklistItemsListBox_DrawItem;
             ChecklistItemsListBox.SelectedIndexChanged += ChecklistItemsListBox_SelectedIndexChanged;
@@ -143,19 +143,19 @@ namespace DailyTasksForm
             // 
             // EntriesNotesRichTextBox
             // 
-            EntriesNotesRichTextBox.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            EntriesNotesRichTextBox.Font = new Font("Consolas", 11F, FontStyle.Regular, GraphicsUnit.Point, 238);
             EntriesNotesRichTextBox.Location = new Point(681, 56);
             EntriesNotesRichTextBox.Name = "EntriesNotesRichTextBox";
-            EntriesNotesRichTextBox.Size = new Size(691, 361);
+            EntriesNotesRichTextBox.Size = new Size(1211, 380);
             EntriesNotesRichTextBox.TabIndex = 13;
             EntriesNotesRichTextBox.Text = "";
             // 
             // ChecklistItemNotesRichTextBox
             // 
-            ChecklistItemNotesRichTextBox.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            ChecklistItemNotesRichTextBox.Font = new Font("Consolas", 11F, FontStyle.Regular, GraphicsUnit.Point, 238);
             ChecklistItemNotesRichTextBox.Location = new Point(681, 474);
             ChecklistItemNotesRichTextBox.Name = "ChecklistItemNotesRichTextBox";
-            ChecklistItemNotesRichTextBox.Size = new Size(691, 364);
+            ChecklistItemNotesRichTextBox.Size = new Size(1211, 482);
             ChecklistItemNotesRichTextBox.TabIndex = 14;
             ChecklistItemNotesRichTextBox.Text = "";
             // 
@@ -174,7 +174,7 @@ namespace DailyTasksForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1384, 861);
+            ClientSize = new Size(1904, 961);
             Controls.Add(AddChecklistItemNoteButton);
             Controls.Add(AddEntryNoteButton);
             Controls.Add(ChecklistItemNotesRichTextBox);
