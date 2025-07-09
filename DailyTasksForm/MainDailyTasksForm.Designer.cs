@@ -32,7 +32,6 @@ namespace DailyTasksForm
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainDailyTasksForm));
             label1 = new Label();
-            AddChecklistItemNoteButton = new Button();
             groupBox2 = new GroupBox();
             AddChecklistItemButton = new Button();
             ChecklistItemsListBox = new ListBox();
@@ -41,7 +40,8 @@ namespace DailyTasksForm
             EntriesListBox = new ListBox();
             EntriesNotesRichTextBox = new RichTextBox();
             ChecklistItemNotesRichTextBox = new RichTextBox();
-            AddEntryNoteButton = new Button();
+            SaveEntryNoteButton = new Button();
+            SaveChecklistItemNoteButton = new Button();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             SuspendLayout();
@@ -54,17 +54,6 @@ namespace DailyTasksForm
             label1.Name = "label1";
             label1.Size = new Size(0, 15);
             label1.TabIndex = 4;
-            // 
-            // AddChecklistItemNoteButton
-            // 
-            AddChecklistItemNoteButton.Anchor = AnchorStyles.Top;
-            AddChecklistItemNoteButton.Location = new Point(681, 442);
-            AddChecklistItemNoteButton.Name = "AddChecklistItemNoteButton";
-            AddChecklistItemNoteButton.Size = new Size(65, 25);
-            AddChecklistItemNoteButton.TabIndex = 10;
-            AddChecklistItemNoteButton.Text = "Edit note";
-            AddChecklistItemNoteButton.UseVisualStyleBackColor = true;
-            AddChecklistItemNoteButton.Click += AddChecklistItemNoteButton_Click;
             // 
             // groupBox2
             // 
@@ -159,24 +148,33 @@ namespace DailyTasksForm
             ChecklistItemNotesRichTextBox.TabIndex = 14;
             ChecklistItemNotesRichTextBox.Text = "";
             // 
-            // AddEntryNoteButton
+            // SaveEntryNoteButton
             // 
-            AddEntryNoteButton.Anchor = AnchorStyles.Top;
-            AddEntryNoteButton.Location = new Point(681, 23);
-            AddEntryNoteButton.Name = "AddEntryNoteButton";
-            AddEntryNoteButton.Size = new Size(65, 25);
-            AddEntryNoteButton.TabIndex = 9;
-            AddEntryNoteButton.Text = "Edit note";
-            AddEntryNoteButton.UseVisualStyleBackColor = true;
-            AddEntryNoteButton.Click += AddEntryNoteButton_Click;
+            SaveEntryNoteButton.Location = new Point(681, 23);
+            SaveEntryNoteButton.Name = "SaveEntryNoteButton";
+            SaveEntryNoteButton.Size = new Size(75, 23);
+            SaveEntryNoteButton.TabIndex = 15;
+            SaveEntryNoteButton.Text = "Save note";
+            SaveEntryNoteButton.UseVisualStyleBackColor = true;
+            SaveEntryNoteButton.Click += SaveEntryNoteButton_Click;
+            // 
+            // SaveChecklistItemNoteButton
+            // 
+            SaveChecklistItemNoteButton.Location = new Point(681, 442);
+            SaveChecklistItemNoteButton.Name = "SaveChecklistItemNoteButton";
+            SaveChecklistItemNoteButton.Size = new Size(75, 23);
+            SaveChecklistItemNoteButton.TabIndex = 16;
+            SaveChecklistItemNoteButton.Text = "Save note";
+            SaveChecklistItemNoteButton.UseVisualStyleBackColor = true;
+            SaveChecklistItemNoteButton.Click += SaveChecklistItemNoteButton_Click;
             // 
             // MainDailyTasksForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1904, 961);
-            Controls.Add(AddChecklistItemNoteButton);
-            Controls.Add(AddEntryNoteButton);
+            Controls.Add(SaveChecklistItemNoteButton);
+            Controls.Add(SaveEntryNoteButton);
             Controls.Add(ChecklistItemNotesRichTextBox);
             Controls.Add(EntriesNotesRichTextBox);
             Controls.Add(groupBox3);
@@ -197,7 +195,6 @@ namespace DailyTasksForm
 
         #endregion
         private Label label1;
-        private Button AddChecklistItemNoteButton;
         private GroupBox groupBox2;
         private Button AddChecklistItemButton;
         private ListBox ChecklistItemsListBox;
@@ -206,6 +203,7 @@ namespace DailyTasksForm
         private ListBox EntriesListBox;
         private RichTextBox EntriesNotesRichTextBox;
         private RichTextBox ChecklistItemNotesRichTextBox;
-        private Button AddEntryNoteButton;
+        private Button SaveEntryNoteButton;
+        private Button SaveChecklistItemNoteButton;
     }
 }

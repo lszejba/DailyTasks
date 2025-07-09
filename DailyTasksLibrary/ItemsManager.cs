@@ -155,5 +155,5 @@ public class ItemsManager
         _jsonContents.Version = CurrentVersion;
     }
 
-    const string CurrentVersion = "1.0";
+    const string CurrentVersion = "1.1";
 }

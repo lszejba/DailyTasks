@@ -136,26 +136,6 @@ public partial class MainDailyTasksForm : Form
         }
     }
 
-    private void AddEntryNoteButton_Click(object sender, EventArgs e)
-    {
-        Entry? entry = EntriesListBox.SelectedItem as Entry;
-        if (entry is not null)
-        {
-            var newForm = new NewNoteForm(manager, entry);
-            newForm.ShowDialog();
-        }
-    }
-
-    private void AddChecklistItemNoteButton_Click(object sender, EventArgs e)
-    {
-        ChecklistItem? item = ChecklistItemsListBox.SelectedItem as ChecklistItem;
-        if (item is not null)
-        {
-            var newForm = new NewNoteForm(manager, item);
-            newForm.ShowDialog();
-        }
-    }
-
     private void EntriesListBox_DrawItem(object sender, DrawItemEventArgs e)
     {
         if (e.Index < 0) return;
@@ -182,5 +162,25 @@ public partial class MainDailyTasksForm : Form
 
         backBrush.Dispose();
         foreBrush.Dispose();
+    }
+
+    private void SaveChecklistItemNoteButton_Click(object sender, EventArgs e)
+    {
+        ChecklistItem? selectedItem = (ChecklistItem?)ChecklistItemsListBox.SelectedItem;
+        if (selectedItem == null)
+        {
+            return;
+        }
+        manager.AddNote(selectedItem, ChecklistItemNotesRichTextBox.Rtf ?? string.Empty);
+    }
+
+    private void SaveEntryNoteButton_Click(object sender, EventArgs e)
+    {
+        Entry? selectedEntry = (Entry?)EntriesListBox.SelectedItem;
+        if (selectedEntry == null)
+        {
+            return;
+        }
+        manager.AddNote(selectedEntry, EntriesNotesRichTextBox.Rtf ?? string.Empty);
     }
 }
