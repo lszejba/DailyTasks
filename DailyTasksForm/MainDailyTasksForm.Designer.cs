@@ -40,8 +40,6 @@ namespace DailyTasksForm
             EntriesListBox = new ListBox();
             EntriesNotesRichTextBox = new RichTextBox();
             ChecklistItemNotesRichTextBox = new RichTextBox();
-            SaveEntryNoteButton = new Button();
-            SaveChecklistItemNoteButton = new Button();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             SuspendLayout();
@@ -138,6 +136,7 @@ namespace DailyTasksForm
             EntriesNotesRichTextBox.Size = new Size(1211, 380);
             EntriesNotesRichTextBox.TabIndex = 13;
             EntriesNotesRichTextBox.Text = "";
+            EntriesNotesRichTextBox.TextChanged += RichTextBox_TextChanged;
             // 
             // ChecklistItemNotesRichTextBox
             // 
@@ -147,34 +146,13 @@ namespace DailyTasksForm
             ChecklistItemNotesRichTextBox.Size = new Size(1211, 482);
             ChecklistItemNotesRichTextBox.TabIndex = 14;
             ChecklistItemNotesRichTextBox.Text = "";
-            // 
-            // SaveEntryNoteButton
-            // 
-            SaveEntryNoteButton.Location = new Point(681, 23);
-            SaveEntryNoteButton.Name = "SaveEntryNoteButton";
-            SaveEntryNoteButton.Size = new Size(75, 23);
-            SaveEntryNoteButton.TabIndex = 15;
-            SaveEntryNoteButton.Text = "Save note";
-            SaveEntryNoteButton.UseVisualStyleBackColor = true;
-            SaveEntryNoteButton.Click += SaveEntryNoteButton_Click;
-            // 
-            // SaveChecklistItemNoteButton
-            // 
-            SaveChecklistItemNoteButton.Location = new Point(681, 442);
-            SaveChecklistItemNoteButton.Name = "SaveChecklistItemNoteButton";
-            SaveChecklistItemNoteButton.Size = new Size(75, 23);
-            SaveChecklistItemNoteButton.TabIndex = 16;
-            SaveChecklistItemNoteButton.Text = "Save note";
-            SaveChecklistItemNoteButton.UseVisualStyleBackColor = true;
-            SaveChecklistItemNoteButton.Click += SaveChecklistItemNoteButton_Click;
+            ChecklistItemNotesRichTextBox.TextChanged += RichTextBox_TextChanged;
             // 
             // MainDailyTasksForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1904, 961);
-            Controls.Add(SaveChecklistItemNoteButton);
-            Controls.Add(SaveEntryNoteButton);
             Controls.Add(ChecklistItemNotesRichTextBox);
             Controls.Add(EntriesNotesRichTextBox);
             Controls.Add(groupBox3);
@@ -203,7 +181,5 @@ namespace DailyTasksForm
         private ListBox EntriesListBox;
         private RichTextBox EntriesNotesRichTextBox;
         private RichTextBox ChecklistItemNotesRichTextBox;
-        private Button SaveEntryNoteButton;
-        private Button SaveChecklistItemNoteButton;
     }
 }

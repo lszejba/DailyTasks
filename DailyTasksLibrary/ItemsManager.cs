@@ -65,10 +65,13 @@ public class ItemsManager
         parentEntry.AddItem(date, name);
         SaveAll();
     }
-
-    public void AddNote(TaskItem item, string note)
+    
+    public void AddNotes(List<Tuple<TaskItem, string>> notes)
     {
-        item.Note = note;
+        foreach (var noteTuple in notes)
+        {
+            noteTuple.Item1.Note = noteTuple.Item2;
+        }
         SaveAll();
     }
 
@@ -155,5 +158,5 @@ public class ItemsManager
         _jsonContents.Version = CurrentVersion;
     }
 
-    const string CurrentVersion = "1.1";
+    const string CurrentVersion = "1.2";
 }

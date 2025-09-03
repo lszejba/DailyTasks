@@ -8,8 +8,12 @@ public partial class MainDailyTasksForm : Form
     private ItemsManager manager;
     private ContextMenuStrip entriesContextMenu;
     private ContextMenuStrip checklistItemsContextMenu;
+    private System.Windows.Forms.Timer debounceTimer;
     public MainDailyTasksForm()
     {
+        debounceTimer = new System.Windows.Forms.Timer();
+        debounceTimer.Interval = 2000; // in ms
+        debounceTimer.Tick += DebounceTimer_Tick;
         InitializeData();
         InitializeComponent();
         InitialSetup();
@@ -164,23 +168,33 @@ public partial class MainDailyTasksForm : Form
         foreBrush.Dispose();
     }
 
-    private void SaveChecklistItemNoteButton_Click(object sender, EventArgs e)
+    private void SaveNotes()
     {
+        List<Tuple<TaskItem, string>> notes = new List<Tuple<TaskItem, string>>();
         ChecklistItem? selectedItem = (ChecklistItem?)ChecklistItemsListBox.SelectedItem;
-        if (selectedItem == null)
+        if (selectedItem is not null)
         {
-            return;
+            notes.Add(new Tuple<TaskItem, string>(selectedItem, ChecklistItemNotesRichTextBox.Rtf ?? string.Empty));
         }
-        manager.AddNote(selectedItem, ChecklistItemNotesRichTextBox.Rtf ?? string.Empty);
+        Entry? selectedEntry = (Entry?)EntriesListBox.SelectedItem;
+        if (selectedEntry is not null)
+        {
+            notes.Add(new Tuple<TaskItem, string>(selectedEntry, EntriesNotesRichTextBox.Rtf ?? string.Empty));
+        }
+
+        manager.AddNotes(notes);
     }
 
-    private void SaveEntryNoteButton_Click(object sender, EventArgs e)
+    private void DebounceTimer_Tick(object sender, EventArgs e)
     {
-        Entry? selectedEntry = (Entry?)EntriesListBox.SelectedItem;
-        if (selectedEntry == null)
-        {
-            return;
-        }
-        manager.AddNote(selectedEntry, EntriesNotesRichTextBox.Rtf ?? string.Empty);
+        debounceTimer.Stop();
+        SaveNotes();
     }
+
+    private void RichTextBox_TextChanged(object sender, EventArgs e)
+    {
+        debounceTimer.Stop();
+        debounceTimer.Start();
+    }
+
 }
