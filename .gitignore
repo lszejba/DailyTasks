@@ -1,5 +1,9 @@
 .vs
-DailyTasksConsole\bin
-DailyTasksConsole\obj
-DailyTasksLibrary\bin
-DailyTasksLibrary\obj
+*.user
+DailyTasksConsole/bin/
+DailyTasksConsole/obj/
+DailyTasksLibrary/bin/
+DailyTasksLibrary/obj/
+DailyTasksForm/bin/
+DailyTasksForm/obj/
+DailyTasksForm/Properties/PublishProfiles/
