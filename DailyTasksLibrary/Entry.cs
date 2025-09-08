@@ -30,10 +30,7 @@ public class Entry : TaskItem
         string result = (IsCompleted ? "[COMPLETE] " : "")
             + (IsCanceled ? "[CANCELED] " : "")
             + Name + (string.IsNullOrEmpty(Description) ? "" : "\n" + Description) + "\n";
-        for (int i = 0; i < Notes?.Count; i++)
-        {
-            result += "[Note " + i + "]: " + Notes[i] + "\n";
-        }
+        result += "[Note] " + Note + "\n";
         foreach (var item in Items)
         {
             result += item.FullString();

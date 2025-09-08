@@ -36,11 +36,7 @@ public class ChecklistItem : TaskItem
     public string FullString()
     {
         string result = "\t" + (IsCompleted ? "[COMPLETE] " : "") + (IsCanceled ? "[CANCELED] " : "") + Value + "\n";
-
-        for (int i = 0; i < Notes?.Count; i++)
-        {
-            result += "\t[Note " + i + "]: " + Notes[i] + "\n";
-        }
+        result += "\t[Note]: " + Note + "\n";
 
         return result;
     }
