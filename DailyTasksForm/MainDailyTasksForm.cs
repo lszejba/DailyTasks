@@ -17,6 +17,7 @@ public partial class MainDailyTasksForm : Form
         InitializeData();
         InitializeComponent();
         InitialSetup();
+        ApplyTheme();
     }
 
     private void InitializeData()
@@ -54,6 +55,18 @@ public partial class MainDailyTasksForm : Form
         checklistItemsContextMenu.Items.Add(checklistItemsContextMenuCancelItem);
         checklistItemsContextMenu.ItemClicked += ChecklistItemsContextMenu_ItemClicked;
         ChecklistItemsListBox.ContextMenuStrip = checklistItemsContextMenu;
+    }
+
+    private void ApplyTheme()
+    {
+        if (StyleHelper.IsSystemDarkTheme())
+        {
+            BackColor = SystemColors.ControlDark;
+        }
+        else
+        {
+            BackColor = SystemColors.ControlDark;
+        }
     }
 
     private void ChecklistItemsContextMenu_ItemClicked(object? sender, ToolStripItemClickedEventArgs e)
@@ -109,6 +122,7 @@ public partial class MainDailyTasksForm : Form
 
     private void EntriesListBox_SelectedIndexChanged(object sender, EventArgs e)
     {
+        EntriesNotesRichTextBox.Rtf = String.Empty;
         if (EntriesListBox.SelectedItem is Entry selectedEntry)
         {
             ChecklistItemsListBox.DataSource = selectedEntry.Items;
@@ -118,6 +132,7 @@ public partial class MainDailyTasksForm : Form
 
     private void ChecklistItemsListBox_SelectedIndexChanged(object sender, EventArgs args)
     {
+        ChecklistItemNotesRichTextBox.Rtf = String.Empty;
         if (ChecklistItemsListBox.SelectedItem is ChecklistItem selectedItem)
         {
             ChecklistItemNotesRichTextBox.Rtf = selectedItem.Note;

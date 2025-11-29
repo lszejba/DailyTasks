@@ -130,6 +130,7 @@ namespace DailyTasksForm
             // 
             // EntriesNotesRichTextBox
             // 
+            EntriesNotesRichTextBox.BackColor = Color.Silver;
             EntriesNotesRichTextBox.Font = new Font("Consolas", 11F, FontStyle.Regular, GraphicsUnit.Point, 238);
             EntriesNotesRichTextBox.Location = new Point(681, 56);
             EntriesNotesRichTextBox.Name = "EntriesNotesRichTextBox";
@@ -140,6 +141,7 @@ namespace DailyTasksForm
             // 
             // ChecklistItemNotesRichTextBox
             // 
+            ChecklistItemNotesRichTextBox.BackColor = Color.Silver;
             ChecklistItemNotesRichTextBox.Font = new Font("Consolas", 11F, FontStyle.Regular, GraphicsUnit.Point, 238);
             ChecklistItemNotesRichTextBox.Location = new Point(681, 474);
             ChecklistItemNotesRichTextBox.Name = "ChecklistItemNotesRichTextBox";

@@ -107,8 +107,19 @@ public class ItemsManager
 
     public void SaveAll()
     {
+        Save(string.Empty);
+    }
+
+    public void CreateBackup()
+    {
+        string prefix = DateTime.Now.ToString("yyyy-MM-dd_HH-mm_");
+        Save(prefix);
+    }
+
+    void Save(string prefix)
+    {
         var path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-        const string fileName = "dailytasks.json";
+        string fileName = prefix + "dailytasks.json";
         var current = Newtonsoft.Json.JsonConvert.SerializeObject(_jsonContents, Newtonsoft.Json.Formatting.Indented);
 
         File.WriteAllText(Path.Combine(path, fileName), current);
@@ -146,6 +157,7 @@ public class ItemsManager
         }
 
         UpdateVersion();
+        CreateBackup();
     }
 
     void UpdateVersion()
