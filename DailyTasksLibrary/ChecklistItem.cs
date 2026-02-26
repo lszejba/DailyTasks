@@ -15,7 +15,7 @@ public class ChecklistItem : TaskItem
         SequenceNumber = seq;
     }
 
-    public string Value { get; }
+    public string Value { get; set; }
 
     public int SequenceNumber { get; set; }
 

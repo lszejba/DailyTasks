@@ -17,7 +17,7 @@ public class Entry : TaskItem
         Items = new BindingList<ChecklistItem>();
     }
 
-    public string Name { get; }
+    public string Name { get; set; }
 
     public string Description { get; }
 
@@ -38,12 +38,13 @@ public class Entry : TaskItem
         return result;
     }
 
-    public void AddItem(DateOnly creationDate, string itemStr) => AddItem(creationDate, itemStr, Items.Count * 10);
+    public ChecklistItem AddItem(DateOnly creationDate, string itemStr) => AddItem(creationDate, itemStr, Items.Count * 10);
 
-    public void AddItem(DateOnly creationDate, string itemStr, int seq)
+    public ChecklistItem AddItem(DateOnly creationDate, string itemStr, int seq)
     {
         ChecklistItem item = new ChecklistItem(creationDate, itemStr, seq);
         Items.Add(item);
+        return item;
     }
 
     public ChecklistItem? GetItem(int index)

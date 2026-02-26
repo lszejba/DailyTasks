@@ -65,6 +65,13 @@ public class ItemsManager
         parentEntry.AddItem(date, name);
         SaveAll();
     }
+
+    public void AddItem(Entry parentEntry, DateOnly date, string name, string note)
+    {
+        ChecklistItem item = parentEntry.AddItem(date, name);
+        item.AddNote(note);
+        SaveAll();
+    }
     
     public void AddNotes(List<Tuple<TaskItem, string>> notes)
     {
@@ -170,5 +177,5 @@ public class ItemsManager
         _jsonContents.Version = CurrentVersion;
     }
 
-    const string CurrentVersion = "1.21";
+    const string CurrentVersion = "1.3";
 }

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             entryNameTextBox = new TextBox();
-            advancedOptionsCheckBox = new CheckBox();
             addNewEntryButton = new Button();
+            entryDescriptionTextBox = new RichTextBox();
             SuspendLayout();
             // 
             // entryNameTextBox
@@ -40,16 +40,6 @@
             entryNameTextBox.Size = new Size(375, 23);
             entryNameTextBox.TabIndex = 1;
             entryNameTextBox.TextChanged += EntryNameTextBox_TextChanged;
-            // 
-            // advancedOptionsCheckBox
-            // 
-            advancedOptionsCheckBox.AutoSize = true;
-            advancedOptionsCheckBox.Location = new Point(12, 69);
-            advancedOptionsCheckBox.Name = "advancedOptionsCheckBox";
-            advancedOptionsCheckBox.Size = new Size(152, 19);
-            advancedOptionsCheckBox.TabIndex = 2;
-            advancedOptionsCheckBox.Text = "Show advanced options";
-            advancedOptionsCheckBox.UseVisualStyleBackColor = true;
             // 
             // addNewEntryButton
             // 
@@ -62,13 +52,21 @@
             addNewEntryButton.UseVisualStyleBackColor = true;
             addNewEntryButton.Click += addNewEntryButton_Click;
             // 
+            // entryDescriptionTextBox
+            // 
+            entryDescriptionTextBox.Location = new Point(12, 56);
+            entryDescriptionTextBox.Name = "entryDescriptionTextBox";
+            entryDescriptionTextBox.Size = new Size(553, 353);
+            entryDescriptionTextBox.TabIndex = 4;
+            entryDescriptionTextBox.Text = "";
+            // 
             // NewEntryForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(577, 95);
+            ClientSize = new Size(577, 421);
+            Controls.Add(entryDescriptionTextBox);
             Controls.Add(addNewEntryButton);
-            Controls.Add(advancedOptionsCheckBox);
             Controls.Add(entryNameTextBox);
             Name = "NewEntryForm";
             Text = "Add new Entry";
@@ -78,7 +76,7 @@
 
         #endregion
         private TextBox entryNameTextBox;
-        private CheckBox advancedOptionsCheckBox;
         private Button addNewEntryButton;
+        private RichTextBox entryDescriptionTextBox;
     }
 }

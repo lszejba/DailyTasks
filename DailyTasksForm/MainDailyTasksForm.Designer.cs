@@ -131,24 +131,24 @@ namespace DailyTasksForm
             // EntriesNotesRichTextBox
             // 
             EntriesNotesRichTextBox.BackColor = Color.Silver;
+            EntriesNotesRichTextBox.Enabled = false;
             EntriesNotesRichTextBox.Font = new Font("Consolas", 11F, FontStyle.Regular, GraphicsUnit.Point, 238);
             EntriesNotesRichTextBox.Location = new Point(681, 56);
             EntriesNotesRichTextBox.Name = "EntriesNotesRichTextBox";
             EntriesNotesRichTextBox.Size = new Size(1211, 380);
             EntriesNotesRichTextBox.TabIndex = 13;
             EntriesNotesRichTextBox.Text = "";
-            EntriesNotesRichTextBox.TextChanged += RichTextBox_TextChanged;
             // 
             // ChecklistItemNotesRichTextBox
             // 
             ChecklistItemNotesRichTextBox.BackColor = Color.Silver;
+            ChecklistItemNotesRichTextBox.Enabled = false;
             ChecklistItemNotesRichTextBox.Font = new Font("Consolas", 11F, FontStyle.Regular, GraphicsUnit.Point, 238);
             ChecklistItemNotesRichTextBox.Location = new Point(681, 474);
             ChecklistItemNotesRichTextBox.Name = "ChecklistItemNotesRichTextBox";
             ChecklistItemNotesRichTextBox.Size = new Size(1211, 482);
             ChecklistItemNotesRichTextBox.TabIndex = 14;
             ChecklistItemNotesRichTextBox.Text = "";
-            ChecklistItemNotesRichTextBox.TextChanged += RichTextBox_TextChanged;
             // 
             // MainDailyTasksForm
             // 

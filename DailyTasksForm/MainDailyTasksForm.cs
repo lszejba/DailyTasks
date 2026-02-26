@@ -8,12 +8,8 @@ public partial class MainDailyTasksForm : Form
     private ItemsManager manager;
     private ContextMenuStrip entriesContextMenu;
     private ContextMenuStrip checklistItemsContextMenu;
-    private System.Windows.Forms.Timer debounceTimer;
     public MainDailyTasksForm()
     {
-        debounceTimer = new System.Windows.Forms.Timer();
-        debounceTimer.Interval = 2000; // in ms
-        debounceTimer.Tick += DebounceTimer_Tick;
         InitializeData();
         InitializeComponent();
         InitialSetup();
@@ -33,6 +29,10 @@ public partial class MainDailyTasksForm : Form
         EntriesListBox.DataSource = manager.Entries;
 
         entriesContextMenu = new ContextMenuStrip();
+        ToolStripMenuItem entriesContextMenuEditItem = new ToolStripMenuItem();
+        entriesContextMenuEditItem.Name = "entryEdit";
+        entriesContextMenuEditItem.Text = "Edit Entry";
+        entriesContextMenu.Items.Add(entriesContextMenuEditItem);
         ToolStripMenuItem entriesContextMenuCompleteItem = new ToolStripMenuItem();
         entriesContextMenuCompleteItem.Name = "entryComplete";
         entriesContextMenuCompleteItem.Text = "Complete Entry";
@@ -45,6 +45,10 @@ public partial class MainDailyTasksForm : Form
         EntriesListBox.ContextMenuStrip = entriesContextMenu;
 
         checklistItemsContextMenu = new ContextMenuStrip();
+        ToolStripMenuItem checklistItemsContextMenuEditItem = new ToolStripMenuItem();
+        checklistItemsContextMenuEditItem.Name = "checklistItemEdit";
+        checklistItemsContextMenuEditItem.Text = "Edit Item";
+        checklistItemsContextMenu.Items.Add(checklistItemsContextMenuEditItem);
         ToolStripMenuItem checklistItemsContextMenuCompleteItem = new ToolStripMenuItem();
         checklistItemsContextMenuCompleteItem.Name = "checklistItemComplete";
         checklistItemsContextMenuCompleteItem.Text = "Complete Item";
@@ -74,6 +78,13 @@ public partial class MainDailyTasksForm : Form
         var selectedItem = ChecklistItemsListBox.SelectedItem as ChecklistItem;
         switch (e.ClickedItem.Name)
         {
+            case "checklistItemEdit":
+                if (selectedItem is not null)
+                {
+                    var updateForm = new UpdateItemForm(manager, selectedItem);
+                    updateForm.ShowDialog(this);
+                }
+                break;
             case "checklistItemComplete":
                 if (selectedItem is not null)
                 {
@@ -99,6 +110,13 @@ public partial class MainDailyTasksForm : Form
         var selectedEntry = EntriesListBox.SelectedItem as Entry;
         switch (e.ClickedItem.Name)
         {
+            case "entryEdit":
+                if (selectedEntry is not null)
+                {
+                    var updateForm = new UpdateItemForm(manager, selectedEntry);
+                    updateForm.ShowDialog(this);
+                }
+                break;
             case "entryComplete":
                 if (selectedEntry is not null)
                 {
@@ -142,7 +160,7 @@ public partial class MainDailyTasksForm : Form
     private void AddEntryButton_Click(object sender, EventArgs e)
     {
         var newForm = new NewEntryForm(manager);
-        newForm.ShowDialog();
+        newForm.ShowDialog(this);
     }
 
     private void AddChecklistItemButton_Click(object sender, EventArgs e)
@@ -151,7 +169,7 @@ public partial class MainDailyTasksForm : Form
         if (entry is not null)
         {
             var newForm = new NewChecklistItemForm(manager, entry);
-            newForm.ShowDialog();
+            newForm.ShowDialog(this);
         }
     }
 
@@ -182,34 +200,4 @@ public partial class MainDailyTasksForm : Form
         backBrush.Dispose();
         foreBrush.Dispose();
     }
-
-    private void SaveNotes()
-    {
-        List<Tuple<TaskItem, string>> notes = new List<Tuple<TaskItem, string>>();
-        ChecklistItem? selectedItem = (ChecklistItem?)ChecklistItemsListBox.SelectedItem;
-        if (selectedItem is not null)
-        {
-            notes.Add(new Tuple<TaskItem, string>(selectedItem, ChecklistItemNotesRichTextBox.Rtf ?? string.Empty));
-        }
-        Entry? selectedEntry = (Entry?)EntriesListBox.SelectedItem;
-        if (selectedEntry is not null)
-        {
-            notes.Add(new Tuple<TaskItem, string>(selectedEntry, EntriesNotesRichTextBox.Rtf ?? string.Empty));
-        }
-
-        manager.AddNotes(notes);
-    }
-
-    private void DebounceTimer_Tick(object sender, EventArgs e)
-    {
-        debounceTimer.Stop();
-        SaveNotes();
-    }
-
-    private void RichTextBox_TextChanged(object sender, EventArgs e)
-    {
-        debounceTimer.Stop();
-        debounceTimer.Start();
-    }
-
 }
